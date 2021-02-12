@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Storage;
 // Model
 use App\User;
 use App\Models\AdminDetail;
+use App\Models\ModelHasRole;
+use Spatie\Permission\Models\Role;
 
 class PenggunaController extends Controller
 {
@@ -38,10 +40,13 @@ class PenggunaController extends Controller
         $title = $this->title;
         $path  = $this->path;
 
+        $roles = Role::select('id', 'name')->get();
+
         return view($this->view . 'index', compact(
             'route',
             'title',
-            'path'
+            'path',
+            'roles'
         ));
     }
 
@@ -89,6 +94,7 @@ class PenggunaController extends Controller
         /* Tahapan : 
          * 1. admins
          * 2. admin_details
+         * 3. model_has_roles
          */
 
         // Tahap 1
@@ -105,6 +111,16 @@ class PenggunaController extends Controller
         $admin_detail->no_telp = $no_telp;
         $admin_detail->photo = 'default.png';
         $admin_detail->save();
+
+        // Tahap 3
+        $path = 'app\User';
+        $role_id = $request->role_id;
+
+        $model_has_role = new ModelHasRole();
+        $model_has_role->role_id = $role_id;
+        $model_has_role->model_type = $path;
+        $model_has_role->model_id = $admin->id;
+        $model_has_role->save();
 
         return response()->json([
             'message' => "Data " . $this->title . " berhasil tersimpan."

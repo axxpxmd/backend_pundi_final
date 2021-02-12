@@ -69,7 +69,18 @@
                                                 <label for="password" class="col-form-label s-12 col-md-2">Password<span class="text-danger ml-1">*</span></label>
                                                 <input type="password" name="password" id="password" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
-                                            <div class="form-group m-0">
+                                            <div class="form-group">
+                                                <label class="col-form-label s-12 col-md-2">Role</label>
+                                                <div class="col-md-6 p-0 bg-light">
+                                                    <select class="select2 form-control r-0 light s-12" name="role_id" id="role_id" autocomplete="off">
+                                                        <option value="">Pilih</option>
+                                                        @foreach ($roles as $i)
+                                                            <option value="{{ $i->id }}">{{ $i->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mt-1">
                                                 <label for="nama" class="col-form-label s-12 col-md-2">Nama Lengkap<span class="text-danger ml-1">*</span></label>
                                                 <input type="text" name="nama" id="nama" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
@@ -135,6 +146,7 @@
             $('#namaLengkap').html(data.nama);
             $('#email_').html(data.email);
             $('#noTelp').html(data.no_telp);
+            $('#roleName').html(data.name);
             var path = "{{ config('app.ftp_src').$path }}" + data.photo;
             $('#photo_').attr({'src': path});
         }, "JSON").fail(function(){

@@ -11,6 +11,10 @@
                         <label class="col-md-10 s-12" id="namaLogin"></label>
                     </div>
                     <div class="row">
+                        <label class="col-md-2 text-right s-12"><strong>Role :</strong></label>
+                        <label class="col-md-10 s-12" id="roleName"></label>
+                    </div>
+                    <div class="row">
                         <label class="col-md-2 text-right s-12"><strong>Nama Lengkap :</strong></label>
                         <label class="col-md-10 s-12" id="namaLengkap"></label>
                     </div>

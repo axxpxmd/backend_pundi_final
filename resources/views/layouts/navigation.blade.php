@@ -6,6 +6,21 @@
             <span>Dashboard</span>
         </a>
     </li>
+    @can('master-role')
+    <li class="header light"><strong>MASTER ROLE</strong></li>
+    <li class="no-b">
+        <a href="{{ route('master-role.permission.index') }}">
+            <i class="icon icon-clipboard-list text-red s-18"></i> 
+            <span>Permission</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ route('master-role.role.index') }}">
+            <i class="icon icon-key3 amber-text s-18"></i> 
+            <span>Role</span>
+        </a>
+    </li>
+    @endcan
     <li class="header light"><strong>MASTER PENGGUNA</strong></li>
     <li class="no-b">
         <a href="{{ route('pengguna.index') }}">

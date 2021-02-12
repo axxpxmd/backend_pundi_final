@@ -20,6 +20,8 @@ class AdminDetail extends Model
     public static function getDataPengguna($id)
     {
         $data = AdminDetail::join('admins', 'admin_details.admin_id', '=', 'admins.id')
+            ->join('model_has_roles', 'model_has_roles.model_id', '=', 'admins.id')
+            ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
             ->where('admin_details.id', $id)
             ->first();
 
