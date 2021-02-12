@@ -7,7 +7,7 @@
             <div class="row p-t-b-10 ">
                 <div class="col">
                     <h4>
-                        <i class="icon icon-user mr-2"></i>
+                        <i class="icon icon-user-o mr-2"></i>
                         {{ $title }}
                     </h4>
                 </div>
@@ -31,8 +31,8 @@
                     <div class="card">
                         <div class="card-header">&nbsp;</div>
                         <div class="card-body">
-                            <img class="mx-auto d-block rounded-circle img-circular" src="{{ asset($path.$adminDetail->photo) }}" width="100" height="100" alt="Foto Profil">
-                            <p class="text-center mt-2 font-weight-normal fs-17 text-uppercase">{{ $adminDetail->full_name }}</p>
+                            <img class="mx-auto d-block rounded-circle img-circular" src="{{ config('app.ftp_src').$path.$adminDetail->photo }}" width="100" height="100" alt="Foto Profil">
+                            <p class="text-center mt-2 font-weight-normal fs-17 text-uppercase">{{ $adminDetail->nama }}</p>
                             <div class="col-md-12">
                                 <div class="row">
                                     <label class="col-md-3 text-right s-13"><strong>Username :</strong></label>
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="row">
                                     <label class="col-md-3 text-right s-13"><strong>No Telp :</strong></label>
-                                    <label class="col-md-8 s-14">{{ $adminDetail->phone }}</label>
+                                    <label class="col-md-8 s-14">{{ $adminDetail->no_telp }}</label>
                                 </div>
                             </div>
                         </div>
@@ -68,16 +68,16 @@
                                                 <input type="text" name="username" id="username" class="form-control r-0 light s-12 col-md-6" value="{{ $adminDetail->admin->username }}" autocomplete="off" required/>
                                             </div>
                                             <div class="form-group m-0">
-                                                <label for="full_name" class="col-form-label s-12 col-md-2">Nama Lengkap<span class="text-danger ml-1">*</span></label>
-                                                <input type="text" name="full_name" id="full_name" class="form-control r-0 light s-12 col-md-6" value="{{ $adminDetail->full_name }}" autocomplete="off" required/>
+                                                <label for="nama" class="col-form-label s-12 col-md-2">Nama Lengkap<span class="text-danger ml-1">*</span></label>
+                                                <input type="text" name="nama" id="nama" class="form-control r-0 light s-12 col-md-6" value="{{ $adminDetail->nama }}" autocomplete="off" required/>
                                             </div>
                                             <div class="form-group m-0">
                                                 <label for="email" class="col-form-label s-12 col-md-2">Email<span class="text-danger ml-1">*</span></label>
                                                 <input type="text" name="email" id="email" class="form-control r-0 light s-12 col-md-6" value="{{ $adminDetail->email }}" autocomplete="off" required/>
                                             </div>
                                             <div class="form-group m-0">
-                                                <label for="phone" class="col-form-label s-12 col-md-2">No Telp<span class="text-danger ml-1">*</span></label>
-                                                <input type="text" name="phone" id="phone" class="form-control r-0 light s-12 col-md-6" value="{{ $adminDetail->phone }}" autocomplete="off" required/>
+                                                <label for="no_telp" class="col-form-label s-12 col-md-2">No Telp<span class="text-danger ml-1">*</span></label>
+                                                <input type="text" name="no_telp" id="no_telp" class="form-control r-0 light s-12 col-md-6" value="{{ $adminDetail->no_telp }}" autocomplete="off" required/>
                                             </div> 
                                             <div class="form-group" style="margin-top: -3px !important">
                                                 <label for="" class="col-form-label s-12 col-md-2">
@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="form-group mt-2">
                                                 <label class="col-form-label s-12 col-md-2"></label>
-                                                <img class="rounded-circle img-circular" id="preview" src="{{ asset($path.$adminDetail->photo) }}" height="100" width="100">
+                                                <img class="rounded-circle img-circular" id="preview" src="{{ config('app.ftp_src').$path.$adminDetail->photo }}" height="100" width="100">
                                             </div>
                                             <div class="form-group mt-3">
                                                 <div class="col-md-2"></div>

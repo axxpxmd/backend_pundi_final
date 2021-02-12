@@ -10,7 +10,7 @@ use App\User;
 class AdminDetail extends Model
 {
     protected $table = 'admin_details';
-    protected $fillable = ['id', 'admin_id', 'full_name', 'email', 'phone', 'photo'];
+    protected $fillable = ['id', 'admin_id', 'nama', 'email', 'no_telp', 'photo'];
 
     public function admin()
     {

@@ -17,8 +17,9 @@ namespace App\Http\Controllers\Profile;
 use Auth;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 // Model
 use App\User;
@@ -54,16 +55,16 @@ class ProfileController extends Controller
 
         $request->validate([
             'username'  => 'required|max:50|unique:admins,username,' . $adminId,
-            'full_name' => 'required|max:100',
+            'nama' => 'required|max:100',
             'email' => 'required|max:100|email|unique:admin_details,email,' . $id,
-            'phone' => 'required|max:20'
+            'no_telp' => 'required|max:20'
         ]);
 
         // Get Data
         $username  = $request->username;
-        $full_name = $request->full_name;
+        $nama = $request->nama;
         $email = $request->email;
-        $phone = $request->phone;
+        $no_telp = $request->no_telp;
 
         /* Tahapan :
          * 1. admins
@@ -84,26 +85,26 @@ class ProfileController extends Controller
             // Proses Saved Foto
             $file     = $request->file('photo');
             $fileName = time() . "." . $file->getClientOriginalName();
-            $request->file('photo')->move("images/ava/", $fileName);
+            $request->file('photo')->storeAs($this->path, $fileName, 'ftp', 'public');
 
             if ($adminDetail->photo != 'default.png') {
                 // Proses Delete Foto
                 $exist = $adminDetail->photo;
                 $path  = "images/ava/" . $exist;
-                \File::delete(public_path($path));
+                Storage::disk('ftp')->delete($path);
             }
 
             $adminDetail->update([
-                'full_name' => $full_name,
+                'nama' => $nama,
                 'email' => $email,
-                'phone' => $phone,
+                'no_telp' => $no_telp,
                 'photo' => $fileName
             ]);
         } else {
             $adminDetail->update([
-                'full_name' => $full_name,
+                'nama' => $nama,
                 'email' => $email,
-                'phone' => $phone,
+                'no_telp' => $no_telp,
             ]);
         }
 

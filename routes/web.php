@@ -30,5 +30,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::namespace('Pengguna')->group(function () {
         Route::resource('pengguna', 'PenggunaController');
         Route::post('pengguna/api', 'PenggunaController@api')->name('pengguna.api');
+        Route::get('showDataModal/{id}', 'PenggunaController@showDataModal')->name('pengguna.showDataModal');
     });
 });

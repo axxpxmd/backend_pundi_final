@@ -36,7 +36,7 @@
                                         <thead>
                                             <th width="4%">No</th>
                                             <th>Nama</th>
-                                            <th width="15%">Email</th>
+                                            <th width="20%">Email</th>
                                             <th width="10%">No Telp</th>
                                             <th width="10%">Nama Login</th>
                                             <th width="8%">Foto</th>
@@ -70,16 +70,16 @@
                                                 <input type="password" name="password" id="password" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
                                             <div class="form-group m-0">
-                                                <label for="full_name" class="col-form-label s-12 col-md-2">Nama Lengkap<span class="text-danger ml-1">*</span></label>
-                                                <input type="text" name="full_name" id="full_name" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
+                                                <label for="nama" class="col-form-label s-12 col-md-2">Nama Lengkap<span class="text-danger ml-1">*</span></label>
+                                                <input type="text" name="nama" id="nama" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
                                             <div class="form-group m-0">
                                                 <label for="email" class="col-form-label s-12 col-md-2">Email<span class="text-danger ml-1">*</span></label>
                                                 <input type="email" name="email" id="email" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
                                             <div class="form-group m-0">
-                                                <label for="phone" class="col-form-label s-12 col-md-2">No Telp<span class="text-danger ml-1">*</span></label>
-                                                <input type="text" name="phone" id="phone" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
+                                                <label for="no_telp" class="col-form-label s-12 col-md-2">No Telp<span class="text-danger ml-1">*</span></label>
+                                                <input type="text" name="no_telp" id="no_telp" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <div class="col-md-2"></div>
@@ -111,9 +111,9 @@
         },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
-            {data: 'full_name', name: 'full_name'},
+            {data: 'nama', name: 'nama'},
             {data: 'email', name: 'email'},
-            {data: 'phone', name: 'phone'},
+            {data: 'no_telp', name: 'no_telp'},
             {data: 'admin_id', name: 'admin_id'},
             {data: 'photo', name: 'photo'},
             {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
@@ -130,12 +130,12 @@
 
     function show(id) {
         $('#myModal').modal('show');
-        $.get("{{ route($route.'show', ':id') }}".replace(':id', id), function(data){
+        $.get("{{ route($route.'showDataModal', ':id') }}".replace(':id', id), function(data){
             $('#namaLogin').html(data.username);
-            $('#fullName').html(data.full_name);
+            $('#namaLengkap').html(data.nama);
             $('#email_').html(data.email);
-            $('#noTelp').html(data.phone);
-            var path = "{{ $path }}" + data.photo;
+            $('#noTelp').html(data.no_telp);
+            var path = "{{ config('app.ftp_src').$path }}" + data.photo;
             $('#photo_').attr({'src': path});
         }, "JSON").fail(function(){
             reload();
