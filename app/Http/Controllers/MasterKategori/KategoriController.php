@@ -45,8 +45,7 @@ class KategoriController extends Controller
 
         return DataTables::of($kategori)
             ->addColumn('action', function ($p) {
-                return "
-                    <a  href='#' onclick='edit(" . $p->id . ")' title='Edit Permission'><i class='icon-pencil mr-1'></i></a>";
+                return "<a  href='#' onclick='edit(" . $p->id . ")' title='Edit Permission'><i class='icon-pencil mr-1'></i></a>";
             })
             ->addIndexColumn()
             ->rawColumns(['action'])

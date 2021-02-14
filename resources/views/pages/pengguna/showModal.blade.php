@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="card">
             <div class="card-header">
-                <h6 class="font-weight-bold">Show Pengguna</h6>
+                <h6 class="font-weight-bold">Menampilkan {{ $title }}</h6>
             </div>
             <div class="card-body">
                 <div class="col-md-12">

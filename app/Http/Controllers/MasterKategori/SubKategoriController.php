@@ -49,8 +49,7 @@ class SubKategoriController extends Controller
 
         return DataTables::of($subKategori)
             ->addColumn('action', function ($p) {
-                return "
-                    <a  href='#' onclick='edit(" . $p->id . ")' title='Edit Permission'><i class='icon-pencil mr-1'></i></a>";
+                return "<a  href='#' onclick='edit(" . $p->id . ")' title='Edit Permission'><i class='icon-pencil mr-1'></i></a>";
             })
             ->editColumn('category_id', function ($p) {
                 return $p->category->n_category;

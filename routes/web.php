@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('profile/{id}/update-password', 'ProfileController@updatePassword')->name('profile.updatePassword');
     });
 
-    // Pengguna
+    // Master Pengguna
     Route::namespace('MasterPengguna')->group(function () {
         Route::resource('pengguna', 'PenggunaController');
         Route::prefix('pengguna')->name('pengguna.')->group(function () {
@@ -63,5 +63,11 @@ Route::group(['middleware' => ['auth']], function () {
         // Judul Section
         Route::resource('judul-section', 'JudulSectionController');
         Route::post('judul-section/api', 'JudulSectionController@api')->name('judul-section.api');
+    });
+
+    // Master User
+    Route::namespace('masterUser')->group(function () {
+        Route::resource('master-user', 'UserController');
+        Route::post('master-user/api', 'UserController@api')->name('master-user.api');
     });
 });
