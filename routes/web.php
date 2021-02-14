@@ -45,7 +45,11 @@ Route::group(['middleware' => ['auth']], function () {
     // Pengguna
     Route::namespace('Pengguna')->group(function () {
         Route::resource('pengguna', 'PenggunaController');
-        Route::post('pengguna/api', 'PenggunaController@api')->name('pengguna.api');
-        Route::get('showDataModal/{id}', 'PenggunaController@showDataModal')->name('pengguna.showDataModal');
+        Route::prefix('pengguna')->name('pengguna.')->group(function () {
+            Route::post('api', 'PenggunaController@api')->name('api');
+            Route::get('show-data-modal/{id}', 'PenggunaController@showDataModal')->name('showDataModal');
+            Route::get('{id}/edit-password', 'PenggunaController@editPassword')->name('editPassword');
+            Route::post('{id}/update-password', 'PenggunaController@updatePassword')->name('updatePassword');
+        });
     });
 });

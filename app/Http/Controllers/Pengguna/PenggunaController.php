@@ -80,7 +80,7 @@ class PenggunaController extends Controller
         $request->validate([
             'username' => 'required|max:50|unique:admins,username',
             'password' => 'required|min:8',
-            'nama' => 'required|max:100',
+            'nama'  => 'required|max:100',
             'email' => 'required|max:100|email|unique:admin_details,email',
             'no_telp' => 'required|max:20'
         ]);
@@ -88,7 +88,7 @@ class PenggunaController extends Controller
         // Get Data
         $username = $request->username;
         $password = $request->password;
-        $nama = $request->nama;
+        $nama  = $request->nama;
         $email = $request->email;
         $no_telp = $request->no_telp;
 
@@ -144,7 +144,7 @@ class PenggunaController extends Controller
         $pengguna = AdminDetail::find($id);
         $roles = Role::select('id', 'name')->get();
 
-        return view($this->view . 'form_edit', compact(
+        return view($this->view . 'edit', compact(
             'route',
             'title',
             'path',
@@ -224,6 +224,37 @@ class PenggunaController extends Controller
 
         return response()->json([
             'message' => 'Data ' . $this->title . ' berhasil dihapus.'
+        ]);
+    }
+
+    public function editPassword($id)
+    {
+        $route = $this->route;
+        $title = $this->title;
+
+        $admin = User::find($id);
+
+        return view($this->view . 'editPassword', compact(
+            'route',
+            'title',
+            'admin'
+        ));
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $request->validate([
+            'password' => 'required|string|min:8',
+            'confirm_password' => 'required|same:password'
+        ]);
+
+        $admin = User::find($id);
+        $admin->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        return response()->json([
+            'message' => 'Data ' . $this->title . ' berhasil diperbaharui.'
         ]);
     }
 }

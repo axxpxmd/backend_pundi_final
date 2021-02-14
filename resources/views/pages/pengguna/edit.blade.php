@@ -23,9 +23,9 @@
                     <li class="nav-item">
                         <a class="nav-link" id="tab2" data-toggle="tab" href="#tambah-data" role="tab"><i class="icon icon-edit"></i>Edit Data</a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a href="{{ route($route.'editPassword', $pengguna->id) }}" class="nav-link"><i class="icon icon-key4"></i>Ganti Password</a>
-                    </li> --}}
+                    <li class="nav-item">
+                        <a href="{{ route($route.'editPassword', $pengguna->admin->id) }}" class="nav-link"><i class="icon icon-key4"></i>Ganti Password</a>
+                    </li>
                 </ul>
             </div>
         </div>
