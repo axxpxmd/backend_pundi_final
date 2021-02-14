@@ -57,5 +57,8 @@ Route::group(['middleware' => ['auth']], function () {
         // Kategori
         Route::resource('kategori', 'KategoriController');
         Route::post('kategori/api', 'KategoriController@api')->name('kategori.api');
+        // Sub Kategori
+        Route::resource('sub-kategori', 'SubKategoriController');
+        Route::post('sub-kategori/api', 'SubKategoriController@api')->name('sub-kategori.api');
     });
 });

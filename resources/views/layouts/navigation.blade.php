@@ -34,7 +34,7 @@
             <i class="icon icon-list text-red s-18"></i> 
             <span>Kategori</span>
         </a>
-        <a href="#">
+        <a href="{{ route('sub-kategori.index') }}">
             <i class="icon icon-list green-text s-18"></i> 
             <span>Sub Kategori</span>
         </a>
