@@ -52,4 +52,10 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('{id}/update-password', 'PenggunaController@updatePassword')->name('updatePassword');
         });
     });
+
+    Route::prefix('kategori')->namespace('Kategori')->group(function () {
+        // Kategori
+        Route::resource('kategori', 'KategoriController');
+        Route::post('kategori/api', 'KategoriController@api')->name('kategori.api');
+    });
 });
