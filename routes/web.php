@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // Pengguna
-    Route::namespace('Pengguna')->group(function () {
+    Route::namespace('MasterPengguna')->group(function () {
         Route::resource('pengguna', 'PenggunaController');
         Route::prefix('pengguna')->name('pengguna.')->group(function () {
             Route::post('api', 'PenggunaController@api')->name('api');
@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
-    Route::prefix('kategori')->namespace('Kategori')->group(function () {
+    Route::namespace('MasterKategori')->group(function () {
         // Kategori
         Route::resource('kategori', 'KategoriController');
         Route::post('kategori/api', 'KategoriController@api')->name('kategori.api');

@@ -12,7 +12,7 @@
  * Github : axxpxmd
  */
 
-namespace App\Http\Controllers\Pengguna;
+namespace App\Http\Controllers\MasterPengguna;
 
 use DataTables;
 

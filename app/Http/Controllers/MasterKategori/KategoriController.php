@@ -12,7 +12,7 @@
  * Github : axxpxmd
  */
 
-namespace App\Http\Controllers\Kategori;
+namespace App\Http\Controllers\MasterKategori;
 
 use DataTables;
 
@@ -20,13 +20,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 // Models
-use App\Models\JudulSection;
+use App\Models\Category;
 
-class JudulSectionController extends Controller
+class KategoriController extends Controller
 {
-    protected $route = 'judul-section.';
-    protected $view  = 'pages.masterKategori.judulSection.';
-    protected $title = 'Judul Section';
+    protected $route = 'kategori.';
+    protected $view  = 'pages.masterKategori.kategori.';
+    protected $title = 'Kategori';
 
     public function index()
     {
@@ -41,9 +41,9 @@ class JudulSectionController extends Controller
 
     public function api()
     {
-        $judulSection = JudulSection::all();
+        $kategori = Category::all();
 
-        return DataTables::of($judulSection)
+        return DataTables::of($kategori)
             ->addColumn('action', function ($p) {
                 return "
                     <a  href='#' onclick='edit(" . $p->id . ")' title='Edit Permission'><i class='icon-pencil mr-1'></i></a>";
@@ -52,7 +52,6 @@ class JudulSectionController extends Controller
             ->rawColumns(['action'])
             ->toJson();
     }
-
 
     public function store()
     {
@@ -63,31 +62,20 @@ class JudulSectionController extends Controller
 
     public function edit($id)
     {
-        $judulSection = JudulSection::find($id);
+        $kategori = Category::find($id);
 
-        return $judulSection;
+        return $kategori;
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'card1' => 'required|max:50',
-            'card2' => 'required|max:50',
-            'card3' => 'required|max:50',
-            'card4' => 'required|max:50'
+            'n_category' => 'required|max:50|unique:category,n_category,' . $id,
         ]);
 
-        $card1 = $request->card1;
-        $card2 = $request->card2;
-        $card3 = $request->card3;
-        $card4 = $request->card4;
-
-        $judulSection = JudulSection::find($id);
-        $judulSection->update([
-            'card1' => $card1,
-            'card2' => $card2,
-            'card3' => $card3,
-            'card4' => $card4
+        $kategori = Category::find($id);
+        $kategori->update([
+            'n_category' => $request->n_category
         ]);
 
         return response()->json([
