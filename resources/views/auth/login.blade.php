@@ -36,7 +36,7 @@ $template = App\Models\Template::select('id', 'logo', 'logo_title', 'logo_auth')
             </div>
             <div class="col-md-3 white">
                 <div class="pl-5 pt-5 pr-5 m-t-90 pb-0">
-                    <img src="{{ asset('images/template/'.$template->logo) }}" class="mx-auto d-block" width="150" alt=""/>
+                    <img src="{{ asset('images/template/'.$template->logo) }}" class="mx-auto d-block" width="300" alt=""/>
                 </div>
                 <div class="p-5">
                     <h3 class="font-weight-normal">Selamat Datang</h3>
