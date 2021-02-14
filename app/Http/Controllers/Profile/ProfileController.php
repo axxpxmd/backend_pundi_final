@@ -120,7 +120,7 @@ class ProfileController extends Controller
 
         $userId = Auth::user()->id;
 
-        return view($this->view . 'edit-password', compact(
+        return view($this->view . 'editPassword', compact(
             'route',
             'title',
             'userId'
