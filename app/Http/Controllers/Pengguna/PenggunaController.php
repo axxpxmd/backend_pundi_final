@@ -57,11 +57,12 @@ class PenggunaController extends Controller
         return DataTables::of($pengguna)
             ->addColumn('action', function ($p) {
                 return "
+                <a href='#' onclick='show(" . $p->id . ")' title='show data'><i class='icon icon-eye3 mr-1'></i></a>
                 <a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Permission'><i class='icon icon-remove'></i></a>
-                <a href='#' onclick='show(" . $p->id . ")' title='show data'><i class='icon icon-eye3 mr-1'></i></a>";
+                ";
             })
             ->editColumn('nama', function ($p) {
-                return "<a href='" . route($this->route . 'show', $p->id) . "' class='text-primary' title='Show Data'>" . $p->nama . "</a>";
+                return "<a href='" . route($this->route . 'edit', $p->id) . "' class='text-primary' title='Show Data'>" . $p->nama . "</a>";
             })
             ->editColumn('admin_id', function ($p) {
                 return $p->admin->username;
@@ -136,7 +137,68 @@ class PenggunaController extends Controller
 
     public function edit($id)
     {
-        // 
+        $route = $this->route;
+        $title = $this->title;
+        $path  = $this->path;
+
+        $pengguna = AdminDetail::find($id);
+        $roles = Role::select('id', 'name')->get();
+
+        return view($this->view . 'form_edit', compact(
+            'route',
+            'title',
+            'path',
+            'roles',
+            'pengguna',
+        ));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $admin_detail = AdminDetail::find($id);
+
+        $request->validate([
+            'username' => 'required|max:50|unique:admins,username,' . $admin_detail->admin_id,
+            'nama'  => 'required|max:100',
+            'email' => 'required|max:100|email|unique:admin_details,email,' . $id,
+            'no_telp' => 'required|max:20'
+        ]);
+
+        // Get Data
+        $username = $request->username;
+        $role_id  = $request->role_id;
+        $nama  = $request->nama;
+        $email = $request->email;
+        $no_telp = $request->no_telp;
+
+        /* Tahapan : 
+         * 1. admins
+         * 2. admin_details
+         * 3. model_has_roles
+         */
+
+        //  Tahap 1
+        $admin = User::find($admin_detail->admin_id);
+        $admin->update([
+            'username' => $username
+        ]);
+
+        // Tahap 2
+        $admin_detail->update([
+            'namae' => $nama,
+            'email' => $email,
+            'no_telp' => $no_telp
+        ]);
+
+        // Tahap 3
+        $model_has_role = ModelHasRole::where('model_id', $admin_detail->admin_id);
+        $model_has_role->update([
+            'role_id' => $role_id
+        ]);
+
+        return response()->json([
+            'message' => "Data " . $this->title . " berhasil diperbaharui."
+        ]);
     }
 
     public function destroy($id)

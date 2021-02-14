@@ -17,6 +17,11 @@ class AdminDetail extends Model
         return $this->belongsTo(User::class, 'admin_id');
     }
 
+    public function modelHasRole()
+    {
+        return $this->belongsTo(ModelHasRole::class, 'admin_id', 'model_id');
+    }
+
     public static function getDataPengguna($id)
     {
         $data = AdminDetail::join('admins', 'admin_details.admin_id', '=', 'admins.id')

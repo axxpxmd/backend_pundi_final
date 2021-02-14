@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+// Model
+use Spatie\Permission\Models\Role;
+
 class ModelHasRole extends Model
 {
     protected $table    = 'model_has_roles';

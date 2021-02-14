@@ -108,7 +108,7 @@
         </div>
     </div>
 </div>
-@include('pages.pengguna.show')
+@include('pages.pengguna.showModal')
 @endsection
 @section('script')
 <script type="text/javascript">
@@ -161,6 +161,7 @@
         }
         else{
             $('#alert').html('');
+            $('#action').attr('disabled', true);
             url = "{{ route($route.'store') }}",
             $.ajax({
                 url : url,
@@ -169,7 +170,6 @@
                 contentType: false,
                 processData: false,
                 success : function(data) {
-                    console.log(data);
                     $('#alert').html("<div role='alert' class='alert alert-success alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button><strong>Success!</strong> " + data.message + "</div>");
                     table.api().ajax.reload();
                     add();    
@@ -183,6 +183,7 @@
                         });
                     }
                     $('#alert').html("<div role='alert' class='alert alert-danger alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button><strong>Error!</strong> " + respon.message + "<ol class='pl-3 m-0'>" + err + "</ol></div>");
+                    $('#action').removeAttr('disabled');
                 }
             });
             return false;
