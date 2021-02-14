@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '| Data Role')
+@section('title', '| Role')
 @section('content')
 <div class="page has-sidebar-left height-full">
     <header class="blue accent-3 relative nav-sticky">

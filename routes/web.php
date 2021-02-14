@@ -60,5 +60,8 @@ Route::group(['middleware' => ['auth']], function () {
         // Sub Kategori
         Route::resource('sub-kategori', 'SubKategoriController');
         Route::post('sub-kategori/api', 'SubKategoriController@api')->name('sub-kategori.api');
+        // Judul Section
+        Route::resource('judul-section', 'JudulSectionController');
+        Route::post('judul-section/api', 'JudulSectionController@api')->name('judul-section.api');
     });
 });

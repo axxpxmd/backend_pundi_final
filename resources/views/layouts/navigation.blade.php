@@ -38,9 +38,9 @@
             <i class="icon icon-list green-text s-18"></i> 
             <span>Sub Kategori</span>
         </a>
-        <a href="#">
+        <a href="{{ route('judul-section.index') }}">
             <i class="icon icon-list text-black s-18"></i> 
-            <span>Judul Home Page</span>
+            <span>Judul Section</span>
         </a>
     </li>
     <li class="header light"><strong>MASTER USER</strong></li>

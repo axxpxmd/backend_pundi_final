@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '| Kategori')
+@section('title', '| Judul Section')
 @section('content')
 <div class="page has-sidebar-left height-full">
     <header class="blue accent-3 relative nav-sticky">
@@ -23,7 +23,10 @@
                             <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <th width="30">No</th>
-                                    <th>Nama Kategori</th>
+                                    <th>Section 1</th>
+                                    <th>Section 2</th>
+                                    <th>Section 3</th>
+                                    <th>Section 4</th>
                                     <th width="60"></th>
                                 </thead>
                                 <tbody></tbody>
@@ -43,8 +46,20 @@
                             <div class="form-row form-inline">
                                 <div class="col-md-12">
                                     <div class="form-group m-0">
-                                        <label for="n_category" class="col-form-label s-12 col-md-4">Nama</label>
-                                        <input type="text" name="n_category" id="n_category" placeholder="" class="form-control r-0 light s-12 col-md-8" autocomplete="off" required/>
+                                        <label for="card1" class="col-form-label s-12 col-md-4">Section 1</label>
+                                        <input type="text" name="card1" id="card1" placeholder="" class="form-control r-0 light s-12 col-md-8" autocomplete="off" required/>
+                                    </div>
+                                    <div class="form-group m-0">
+                                        <label for="card2" class="col-form-label s-12 col-md-4">Section 2</label>
+                                        <input type="text" name="card2" id="card2" placeholder="" class="form-control r-0 light s-12 col-md-8" autocomplete="off" required/>
+                                    </div>
+                                    <div class="form-group m-0">
+                                        <label for="card3" class="col-form-label s-12 col-md-4">Section 3</label>
+                                        <input type="text" name="card3" id="card3" placeholder="" class="form-control r-0 light s-12 col-md-8" autocomplete="off" required/>
+                                    </div>
+                                    <div class="form-group m-0">
+                                        <label for="card4" class="col-form-label s-12 col-md-4">Section 4</label>
+                                        <input type="text" name="card4" id="card4" placeholder="" class="form-control r-0 light s-12 col-md-8" autocomplete="off" required/>
                                     </div>
                                     <div class="form-group mt-2">
                                         <div class="col-md-4"></div>
@@ -73,7 +88,10 @@
         },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
-            {data: 'n_category', name: 'n_category'},
+            {data: 'card1', name: 'card1'},
+            {data: 'card2', name: 'card2'},
+            {data: 'card3', name: 'card3'},
+            {data: 'card4', name: 'card4'},
             {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
         ]
     });
@@ -85,7 +103,7 @@
         $('input[name=_method]').val('POST');
         $('#txtAction').html('');
         $('#reset').show();
-        $('#n_category').focus();
+        $('#card1').focus();
     }
 
     add();
@@ -127,7 +145,10 @@
         $('input[name=_method]').val('PATCH');
         $.get("{{ route($route.'edit', ':id') }}".replace(':id', id), function(data){
             $('#id').val(data.id);
-            $('#n_category').val(data.n_category).focus();
+            $('#card1').val(data.card1).focus();
+            $('#card2').val(data.card2);
+            $('#card3').val(data.card3);
+            $('#card4').val(data.card4);
         }, "JSON").fail(function(){
             reload();
         });

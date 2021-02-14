@@ -20,45 +20,39 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 // Models
-use App\Models\Category;
-use App\Models\SubCategory;
+use App\Models\JudulSection;
 
-class SubKategoriController extends Controller
+class JudulSectionController extends Controller
 {
-    protected $route = 'sub-kategori.';
-    protected $view  = 'pages.masterKategori.subKategori.';
-    protected $title = 'Sub Kategori';
+    protected $route = 'judul-section.';
+    protected $view  = 'pages.masterKategori.judulSection.';
+    protected $title = 'Judul Section';
 
     public function index()
     {
         $route = $this->route;
         $title = $this->title;
 
-        $categorys = Category::select('id', 'n_category')->get();
-
         return view($this->view . 'index', compact(
             'route',
-            'title',
-            'categorys'
+            'title'
         ));
     }
 
     public function api()
     {
-        $subKategori = SubCategory::all();
+        $judulSection = JudulSection::all();
 
-        return DataTables::of($subKategori)
+        return DataTables::of($judulSection)
             ->addColumn('action', function ($p) {
                 return "
                     <a  href='#' onclick='edit(" . $p->id . ")' title='Edit Permission'><i class='icon-pencil mr-1'></i></a>";
-            })
-            ->editColumn('category_id', function ($p) {
-                return $p->category->n_category;
             })
             ->addIndexColumn()
             ->rawColumns(['action'])
             ->toJson();
     }
+
 
     public function store()
     {
@@ -69,25 +63,31 @@ class SubKategoriController extends Controller
 
     public function edit($id)
     {
-        $subKategori = SubCategory::find($id);
+        $judulSection = JudulSection::find($id);
 
-        return $subKategori;
+        return $judulSection;
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'n_sub_category' => 'required|max:50|unique:sub_category,n_sub_category,' . $id,
-            'category_id' => 'required'
+            'card1' => 'required|max:50',
+            'card2' => 'required|max:50',
+            'card3' => 'required|max:50',
+            'card4' => 'required|max:50'
         ]);
 
-        $category_id = $request->category_id;
-        $n_sub_category = $request->n_sub_category;
+        $card1 = $request->card1;
+        $card2 = $request->card2;
+        $card3 = $request->card3;
+        $card4 = $request->card4;
 
-        $subKategori = SubCategory::find($id);
-        $subKategori->update([
-            'n_sub_category' => $n_sub_category,
-            'category_id' => $category_id
+        $judulSection = JudulSection::find($id);
+        $judulSection->update([
+            'card1' => $card1,
+            'card2' => $card2,
+            'card3' => $card3,
+            'card4' => $card4
         ]);
 
         return response()->json([
