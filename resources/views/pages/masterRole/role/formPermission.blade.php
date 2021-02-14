@@ -20,39 +20,43 @@
             </div>
         </div>
     </header>
-    <div class="container-fluid my-3">
-        <div class="card no-b">
-            <div class="card-body">
-                <div id="formPermission">
-                    <div id="alert"></div>
-                    <div class="row">
-                        <div class="col-6">
-                            <form class="needs-validation" id="form" method="POST" novalidate>
-                                {{ method_field('POST') }}
-                                <input type="hidden" id="id" name="id" value="{{ $role->id }}"/>
-                                <div class="form-row form-inline">
-                                    <div class="col-md-12">
-                                        <div class="form-group m-0">
-                                            <label for="permission" class="col-form-label col-md-3">Permission :</label>
-                                            <div class="col-md-9 p-0">
-                                                <select name="permissions[]" id="permission" placeholder="" class="select2 form-control r-0 light s-12" multiple="multiple" required>
-                                                    @foreach($permissions as $key=>$permission)
-                                                    <option value="{{ $permission->name }}">{{ $permission->name }}</option>
-                                                    @endforeach
-                                                <select>
+    <div class="container-fluid relative animatedParent animateOnce">
+        <div class="tab-content my-3">
+            <div class="tab-pane animated fadeInUpShort show active">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="formPermission">
+                            <div id="alert"></div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <form class="needs-validation" id="form" method="POST" novalidate>
+                                        {{ method_field('POST') }}
+                                        <input type="hidden" id="id" name="id" value="{{ $role->id }}"/>
+                                        <div class="form-row form-inline">
+                                            <div class="col-md-12">
+                                                <div class="form-group m-0">
+                                                    <label for="permission" class="col-form-label col-md-3">Permission :</label>
+                                                    <div class="col-md-9 p-0">
+                                                        <select name="permissions[]" id="permission" placeholder="" class="select2 form-control r-0 light s-12" multiple="multiple" required>
+                                                            @foreach($permissions as $key=>$permission)
+                                                            <option value="{{ $permission->name }}">{{ $permission->name }}</option>
+                                                            @endforeach
+                                                        <select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mt-3">
+                                                    <div class="col-md-3"></div>
+                                                    <button type="submit" class="btn btn-primary btn-sm" id="action2"><i class="icon-save mr-2"></i>Simpan</button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group mt-3">
-                                            <div class="col-md-3"></div>
-                                            <button type="submit" class="btn btn-primary btn-sm" id="action2"><i class="icon-save mr-2"></i>Simpan</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="col-6 mt-2">
-                            <strong>List Permission:</strong>
-                            <ol id="viewPermission" class=""></ol>
+                                <div class="col-6 mt-2">
+                                    <strong>List Permission:</strong>
+                                    <ol id="viewPermission" class=""></ol>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

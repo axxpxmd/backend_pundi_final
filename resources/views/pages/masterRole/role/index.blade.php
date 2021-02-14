@@ -14,52 +14,56 @@
             </div>
         </div>
     </header>
-    <div class="container-fluid my-3">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card no-b">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
-                                    <th width="30">No</th>
-                                    <th>Nama</th>
-                                    <th width="80">Guard Name</th>
-                                    <th width="80">Permissions</th>
-                                    <th width="60"></th>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div id="alert"></div>
-                <div class="card no-b">
-                    <div class="card-body">
-                        <form class="needs-validation" id="form" method="POST" novalidate>
-                            {{ method_field('POST') }}
-                            <input type="hidden" id="id" name="id"/>
-                            <h4 id="formTitle">Tambah Data</h4><hr>
-                            <div class="form-row form-inline">
-                                <div class="col-md-12">
-                                    <div class="form-group m-0">
-                                        <label for="name" class="col-form-label s-12 col-md-4">Nama</label>
-                                        <input type="text" name="name" id="name" placeholder="" class="form-control r-0 light s-12 col-md-8" autocomplete="off" required/>
-                                    </div>
-                                    <div class="form-group m-0">
-                                        <label for="guard_name" class="col-form-label s-12 col-md-4">Guard Name</label>
-                                        <input type="text" name="guard_name" id="guard_name" placeholder="" class="form-control r-0 light s-12 col-md-8" autocomplete="off" required/>
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <div class="col-md-4"></div>
-                                        <button type="submit" class="btn btn-primary btn-sm" id="action"><i class="icon-save mr-2"></i>Simpan<span id="txtAction"></span></button>
-                                        <a class="btn btn-sm" onclick="add()" id="reset">Reset</a>
-                                    </div>
+    <div class="container-fluid relative animatedParent animateOnce">
+        <div class="tab-content my-3">
+            <div class="tab-pane animated fadeInUpShort show active">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card no-b">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                            <th width="30">No</th>
+                                            <th>Nama</th>
+                                            <th width="80">Guard Name</th>
+                                            <th width="80">Permissions</th>
+                                            <th width="60"></th>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="alert"></div>
+                        <div class="card no-b">
+                            <div class="card-body">
+                                <form class="needs-validation" id="form" method="POST" novalidate>
+                                    {{ method_field('POST') }}
+                                    <input type="hidden" id="id" name="id"/>
+                                    <h4 id="formTitle">Tambah Data</h4><hr>
+                                    <div class="form-row form-inline">
+                                        <div class="col-md-12">
+                                            <div class="form-group m-0">
+                                                <label for="name" class="col-form-label s-12 col-md-4">Nama</label>
+                                                <input type="text" name="name" id="name" placeholder="" class="form-control r-0 light s-12 col-md-8" autocomplete="off" required/>
+                                            </div>
+                                            <div class="form-group m-0">
+                                                <label for="guard_name" class="col-form-label s-12 col-md-4">Guard Name</label>
+                                                <input type="text" name="guard_name" id="guard_name" placeholder="" class="form-control r-0 light s-12 col-md-8" autocomplete="off" required/>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <div class="col-md-4"></div>
+                                                <button type="submit" class="btn btn-primary btn-sm" id="action"><i class="icon-save mr-2"></i>Simpan<span id="txtAction"></span></button>
+                                                <a class="btn btn-sm" onclick="add()" id="reset">Reset</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
