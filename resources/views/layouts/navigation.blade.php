@@ -67,7 +67,7 @@
         <li class="no-b">
             <a href="#">
                 <i class="icon icon-document text-danger s-18"></i> 
-                <span>Semua Terverifikasi</span>
+                <span>Semua</span>
             </a>
         </li>
         <li class="treeview">
