@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
+    // Master Kategori
     Route::namespace('MasterKategori')->group(function () {
         // Kategori
         Route::resource('kategori', 'KategoriController');
