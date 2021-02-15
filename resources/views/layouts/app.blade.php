@@ -31,8 +31,8 @@ $template = App\Models\Template::select('id', 'logo', 'logo_title', 'logo_auth')
 <div id="app">
     <aside class="main-sidebar fixed offcanvas shadow" data-toggle='offcanvas'>
         <section class="sidebar">
-            <div class="d-block img-fluid mt-3 mb-3 p-3">
-                <img src="{{ asset('images/template/'.$template->logo)}}" class="mx-auto d-block" width="150" alt="Logo Top">
+            <div class="d-block img-fluid mt-3 mb-3">
+                <img src="{{ asset('images/template/'.$template->logo)}}" class="mx-auto d-block" width="100" alt="Logo Top">
             </div>
             <div class="relative">
                 <a data-toggle="collapse" href="#userSettingsCollapse" role="button" class="btn-fab btn-fab-sm absolute fab-right-bottom fab-top btn-primary shadow1 ">
