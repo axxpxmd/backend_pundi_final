@@ -149,7 +149,7 @@ class PenggunaController extends Controller
             'title',
             'path',
             'roles',
-            'pengguna',
+            'pengguna'
         ));
     }
 

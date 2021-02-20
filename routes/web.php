@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // Master User
-    Route::namespace('masterUser')->group(function () {
+    Route::namespace('MasterUser')->group(function () {
         Route::resource('master-user', 'UserController');
         Route::post('master-user/api', 'UserController@api')->name('master-user.api');
     });
