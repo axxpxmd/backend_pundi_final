@@ -71,4 +71,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('master-user', 'UserController');
         Route::post('master-user/api', 'UserController@api')->name('master-user.api');
     });
+
+    // Master Article
+    Route::namespace('MasterArtikel')->name('artikel.')->group(function () {
+        // Semua
+        Route::resource('semua', 'SemuaArtikelController');
+        Route::post('semua/api', 'SemuaArtikelController@api')->name('semua.api');
+    });
 });

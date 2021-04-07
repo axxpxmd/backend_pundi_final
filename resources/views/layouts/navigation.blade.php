@@ -7,7 +7,7 @@
         </a>
     </li>
     @can('master-role')
-    <li class="header light"><strong>MASTER ROLE</strong></li>
+    <li class="header light"><strong>ROLE</strong></li>
     <li class="no-b">
         <a href="{{ route('master-role.permission.index') }}">
             <i class="icon icon-clipboard-list text-red s-18"></i> 
@@ -21,14 +21,14 @@
         </a>
     </li>
     @endcan
-    <li class="header light"><strong>MASTER PENGGUNA</strong></li>
+    <li class="header light"><strong>PENGGUNA</strong></li>
     <li class="no-b">
         <a href="{{ route('pengguna.index') }}">
             <i class="icon icon-user-o cyan-text s-18"></i> 
             <span>Pengguna</span>
         </a>
     </li>
-    <li class="header light"><strong>MASTER KATEGORI</strong></li>
+    <li class="header light"><strong>KATEGORI</strong></li>
     <li class="no-b">
         <a href="{{ route('kategori.index') }}">
             <i class="icon icon-list text-red s-18"></i> 
@@ -43,14 +43,14 @@
             <span>Judul Section</span>
         </a>
     </li>
-    <li class="header light"><strong>MASTER USER</strong></li>
+    <li class="header light"><strong>USER</strong></li>
     <li class="no-b">
         <a href="{{ route('master-user.index') }}">
             <i class="icon icon-user-circle-o text-yellow s-18"></i> 
             <span>User</span>
         </a>
     </li>
-    <li class="header light"><strong>MASTER ARTIKEL</strong></li>
+    <li class="header light"><strong>ARTIKEL</strong></li>
     <li class="no-b">
         <li class="no-b">
             <a href="#">
@@ -65,7 +65,7 @@
             </a>
         </li>
         <li class="no-b">
-            <a href="#">
+            <a href="{{ route('artikel.semua.index') }}">
                 <i class="icon icon-document text-danger s-18"></i> 
                 <span>Semua</span>
             </a>
@@ -83,7 +83,7 @@
             </ul>
         </li>
     </li>
-    <li class="header light"><strong>MASTER GAMBAR</strong></li>
+    <li class="header light"><strong>GAMBAR</strong></li>
     <li class="no-b">
         <a href="#">
             <i class="icon icon-picture-o text-blue s-18"></i> 
@@ -94,7 +94,7 @@
             <span>Poster</span>
         </a>
     </li>
-    <li class="header light"><strong>MASTER KONSULTASI</strong></li>
+    <li class="header light"><strong>KONSULTASI</strong></li>
     <li class="no-b">
         <a href="#">
             <i class="icon icon-question-circle-o green-text s-18"></i> 
@@ -105,7 +105,7 @@
             <span>Konsultasi</span>
         </a>
     </li>
-    <li class="header light"><strong>MASTER KOMEN</strong></li>
+    <li class="header light"><strong>KOMEN</strong></li>
     <li class="no-b">
         <a href="#">
             <i class="icon icon-comments-o blue-text s-18"></i> 
