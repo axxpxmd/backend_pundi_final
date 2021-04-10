@@ -49,6 +49,7 @@
                                             <th>Judul</th>
                                             <th width="20%">Penulis</th>
                                             <th width="10%">Kategori</th>
+                                            <th width="13%">Tanggal Dibuat</th>
                                             <th width="4%"></th>
                                         </thead>
                                         <tbody></tbody>
@@ -83,6 +84,7 @@
             {data: 'title', name: 'title'},
             {data: 'author', name: 'author'},
             {data: 'category', name: 'category'},
+            {data: 'created_at', name: 'created_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
         ]
     });

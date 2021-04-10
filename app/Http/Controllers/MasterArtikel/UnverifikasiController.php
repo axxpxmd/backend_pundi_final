@@ -55,13 +55,13 @@ class UnverifikasiController extends Controller
         // get param
         $category_id = $request->category_id;
 
-        $article = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
+        $article = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status', 'created_at')
             ->where('status', 0)
             ->orderBy('id', 'DESC')
             ->get();
 
         if ($category_id != 0) {
-            $article = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
+            $article = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status', 'created_at')
                 ->where('status', 0)
                 ->where('category_id', $category_id)
                 ->orderBy('id', 'DESC')
@@ -184,6 +184,19 @@ class UnverifikasiController extends Controller
 
     public function destroy($id)
     {
-        // 
+        $article = Article::findOrFail($id);
+
+        // Delete old Photo from Storage
+        $exist = $article->image;
+        if ($exist != null) {
+            Storage::disk('ftp')->delete($this->pathArticle . $exist);
+        }
+
+        // delete from table
+        $article->delete();
+
+        return response()->json([
+            'message' => 'Artikel berhasil dihapus.'
+        ]);
     }
 }
