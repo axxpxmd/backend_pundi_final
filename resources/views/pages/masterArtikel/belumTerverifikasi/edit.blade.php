@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Arikel -->
+            <!-- Edit Arikel -->
             <div class="col-md-9">
                 <div class="card ">
                     <div class="card-header white text-center">
@@ -41,8 +41,18 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="text" class="form-control text-black mt-3 mb-3" name="title" value="{{ $article->title }}">
-                        <textarea name="content" id="editor">{{ $article->content }}</textarea>
+                        <div class="mt-2 ml-3">
+                            <label for="source_image" class="fs-14 font-weight-bold">Sumber Gambar</label>
+                            <input type="text" name="source_image" class="form-control col-md-12" value="{{ $article->source_image }}" autocomplete="off" required/>
+                        </div>
+                        <div class="mt-2 ml-3">
+                            <label for="title" class="fs-14 font-weight-bold">Judul</label>
+                            <input type="text" name="title" class="form-control col-md-12" value="{{ $article->title }}" autocomplete="off" required/>
+                        </div>
+                        <div class="mt-2 ml-3">
+                            <label for="content" class="fs-14 font-weight-bold">Isi</label>
+                            <textarea name="content" id="editor">{{ $article->content }}</textarea>
+                        </div>
                     </div>
                 </div>
             </div>

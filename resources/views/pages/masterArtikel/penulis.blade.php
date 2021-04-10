@@ -13,17 +13,13 @@
             <span>{{ $article->author->bio }}</span>
         </div>
         <div class="mt-3 ml-3">
-            <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Email</label>
-                <div class="col-sm-9">
-                    <label class="form-control-plaintext -ml-30">:&nbsp; {{ $article->author->email }}</label>
-                </div>
+            <div class="row">
+                <label class="col-sm-3 font-weight-bold">Email</label>
+                <label class="col-sm-8">: {{ $article->author->email }}</label>
             </div>
-            <div class="form-group row -mt-20">
-                <label class="col-sm-3 col-form-label">Kontak</label>
-                <div class="col-sm-9">
-                    <label class="form-control-plaintext -ml-30">:&nbsp; {{ $article->author->no_telp }}</label>
-                </div>
+            <div class="row">
+                <label class="col-sm-3 font-weight-bold">No Telp</label>
+                <label class="col-sm-8">: {{ $article->author->no_telp }}</label>
             </div>
         </div>
     </div>

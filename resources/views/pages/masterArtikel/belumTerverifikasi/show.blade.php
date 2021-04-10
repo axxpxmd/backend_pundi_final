@@ -69,15 +69,16 @@
                         </div>
                     </div>
                     <!-- Arikel -->
-                    <div class="col-md-9">
+                    <div class="col-md-9 justify-content-center">
                         <div class="card ">
                             <div class="card-header white text-center">
                                 <strong>ARTIKEL</strong>
                             </div>
                             <div class="card-body">
                                 <img class="mx-auto d-block img-fluid rounded" width="300"  src="{{ config('app.ftp_src').'/images/artikel/'.$article->image }}" alt="photo">
+                                <h6 class="text-center m-1">{{ $article->source_image != null ? $article->source_image : '-' }}</h6>
                                 <h4 class="font-weight-bold text-center mt-3">{{ $article->title }}</h4>
-                                <div class="ml-5 mr-5">
+                                <div class="m-r-100 m-l-100">
                                     {!! $article->content !!}
                                 </div>
                             </div>
