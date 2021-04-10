@@ -40,7 +40,7 @@ $template = App\Models\Template::select('id', 'logo', 'logo_title', 'logo_auth')
                 </a>
                 <div class="user-panel p-3 light mb-2">
                     <div class="float-left image pl-1">
-                        <img width="60" height="60" class="rounded-circle img-circular mr-2" src="{{ config('app.ftp_src').'images/ava/'.Auth::user()->adminDetail[0]->photo }}" alt="User Image">
+                        <img width="60" height="60" class="rounded-circle img-circular mr-2" src="{{ config('app.ftp_src').'images/ava/'.Auth::user()->adminDetail->photo }}" alt="User Image">
                     </div>
                     <div class="float-left info mt-2 pl-2">
                         <h6 class="font-weight-light mb-1">{{ Auth::user()->username }}</h6>

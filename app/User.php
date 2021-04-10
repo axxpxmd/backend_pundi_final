@@ -14,10 +14,10 @@ class User extends Authenticatable
 
     protected $table = 'admins';
     protected $fillable = ['username', 'password'];
-    protected $hidden = ['password',];
+    protected $hidden = ['password'];
 
     public function adminDetail()
     {
-        return $this->hasMany(AdminDetail::class, 'admin_id', 'id');
+        return $this->belongsTo(AdminDetail::class, 'id', 'admin_id');
     }
 }

@@ -63,8 +63,6 @@ function tampilkanPreview(gambar, idpreview) {
                         text: "ok!",
                         btnClass: 'btn-primary',
                         keys: ['enter'],
-                        action: reset()
-
                     }
                 }
             });

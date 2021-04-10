@@ -8,7 +8,7 @@
                 <div class="col">
                     <h4>
                         <i class="icon icon-user-o"> </i>
-                        Show {{ $title }} | {{ $admin->adminDetail[0]->nama }}
+                        Show {{ $title }} | {{ $admin->adminDetail->nama }}
                     </h4>
                 </div>
             </div>

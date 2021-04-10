@@ -77,5 +77,10 @@ Route::group(['middleware' => ['auth']], function () {
         // Semua
         Route::resource('semua', 'SemuaArtikelController');
         Route::post('semua/api', 'SemuaArtikelController@api')->name('semua.api');
+        // Publish
+        Route::resource('publish', 'UnverifikasiController');
+        Route::post('publish/api', 'UnverifikasiController@api')->name('publish.api');
+        Route::post('publish/publish-artikel/{id}', 'UnverifikasiController@publish')->name('publish.publishArticle');
+        Route::post('publis/un-publish-artikel/{id}', 'UnverifikasiController@unPublish')->name('publish.unPublishArticle');
     });
 });

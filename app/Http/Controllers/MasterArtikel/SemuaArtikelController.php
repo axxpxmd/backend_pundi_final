@@ -27,7 +27,7 @@ class SemuaArtikelController extends Controller
 {
     protected $route = 'artikel.semua.';
     protected $view  = 'pages.masterArtikel.semua.';
-    protected $path  = '/images/ava/';
+    protected $path  = '';
     protected $title = 'Artikel';
 
     public function index()

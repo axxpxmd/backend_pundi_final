@@ -52,22 +52,22 @@
     </li>
     <li class="header light"><strong>ARTIKEL</strong></li>
     <li class="no-b">
-        <li class="no-b">
+        {{-- <li class="no-b">
             <a href="#">
                 <i class="icon icon-document-checked text-success s-18"></i> 
                 <span>Terverifikasi</span>
             </a>
-        </li>
+        </li> --}}
         <li class="no-b">
-            <a href="#">
-                <i class="icon icon-document-cancel cyan-text s-18"></i> 
-                <span>Belum Terverifikasi</span>
+            <a href="{{ route('artikel.publish.index') }}">
+                <i class="icon icon-clipboard-upload cyan-text s-18"></i> 
+                <span>Publish Artikel</span>
             </a>
         </li>
         <li class="no-b">
             <a href="{{ route('artikel.semua.index') }}">
-                <i class="icon icon-document text-danger s-18"></i> 
-                <span>Semua</span>
+                <i class="icon icon-document text-danger s-18"></i>  
+                <span>Artikel</span>
             </a>
         </li>
         <li class="treeview">
