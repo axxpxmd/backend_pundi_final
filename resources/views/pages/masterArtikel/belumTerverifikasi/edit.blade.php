@@ -1,5 +1,5 @@
 <div class="tab-pane animated fadeInUpShort show" id="edit-data" role="tabpanel">
-    <form id="form" action="{{ route('artikel.publish.update', $article->id) }}" method="POST"  enctype="multipart/form-data">
+    <form id="form" action="{{ route('artikel.publish.update', $article->id) }}" method="POST" class="needs-validation" novalidate  enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
         <div class="row">
@@ -59,3 +59,12 @@
         </div>
     </form>
 </div>
+<script>
+    $('#form').on('submit', function (e) {
+        if ($(this)[0].checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        $(this).addClass('was-validated');
+    });
+</script>

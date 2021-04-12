@@ -14,12 +14,12 @@
         </div>
         <div class="mt-3 ml-3">
             <div class="row">
-                <label class="col-sm-3 font-weight-bold">Email</label>
-                <label class="col-sm-8">: {{ $article->author->email }}</label>
+                <label class="col-sm-3 font-weight-bold fs-14">Email</label>
+                <label class="col-sm-8 fs-14">: {{ $article->author->email }}</label>
             </div>
             <div class="row">
-                <label class="col-sm-3 font-weight-bold">No Telp</label>
-                <label class="col-sm-8">: {{ $article->author->no_telp }}</label>
+                <label class="col-sm-3 font-weight-bold fs-14">No Telp</label>
+                <label class="col-sm-8 fs-14">: {{ $article->author->no_telp }}</label>
             </div>
         </div>
     </div>
