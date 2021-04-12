@@ -93,14 +93,16 @@ class UnverifikasiController extends Controller
         $route = $this->route;
         $title = $this->title;
         $path  = $this->path;
+        $showEdit = 'true';
 
         $article = Article::find($id);
 
-        return view($this->view . 'show', compact(
+        return view('pages.masterArtikel.show', compact(
             'route',
             'title',
             'path',
-            'article'
+            'article',
+            'showEdit'
         ));
     }
 

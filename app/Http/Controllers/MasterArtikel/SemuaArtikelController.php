@@ -27,7 +27,8 @@ class SemuaArtikelController extends Controller
 {
     protected $route = 'artikel.semua.';
     protected $view  = 'pages.masterArtikel.semua.';
-    protected $path  = '';
+    protected $path  = '/images/ava/';
+    protected $pathArticle = '/images/artikel/';
     protected $title = 'Artikel';
 
     public function index()
@@ -68,7 +69,7 @@ class SemuaArtikelController extends Controller
                 ";
             })
             ->editColumn('title', function ($p) {
-                return "<a href='" . route($this->route . 'edit', $p->id) . "' class='text-primary' title='Show Data'>" . $p->title . "</a>";
+                return "<a href='" . route($this->route . 'show', $p->id) . "' class='text-primary' title='Show Data'>" . $p->title . "</a>";
             })
             ->editColumn('author', function ($p) {
                 return $p->author->name;
@@ -86,5 +87,24 @@ class SemuaArtikelController extends Controller
             ->addIndexColumn()
             ->rawColumns(['action', 'title', 'status'])
             ->toJson();
+    }
+
+    public function show($id)
+    {
+        $route = $this->route;
+        $title = $this->title;
+        $path  = $this->path;
+        $showEdit = 'false';
+
+        $article = Article::find($id);
+        // dd($article->author->photo);
+
+        return view('pages.masterArtikel.show', compact(
+            'route',
+            'title',
+            'path',
+            'article',
+            'showEdit'
+        ));
     }
 }

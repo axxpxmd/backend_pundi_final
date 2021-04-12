@@ -8,7 +8,7 @@
             <div class="row p-t-b-10 ">
                 <div class="col">
                     <h4>
-                        <i class="icon icon-clipboard-upload"></i>
+                        <i class="icon {{ $showEdit == 'true' ? 'icon-clipboard-upload' : 'icon-document' }}"></i>
                         Menampilkan Artikel
                     </h4>
                 </div>
@@ -21,9 +21,11 @@
                     <li class="nav-item">
                         <a class="nav-link active show" id="tab1" data-toggle="tab" href="#semua-data" role="tab"><i class="icon icon-document"></i>Artikel</a>
                     </li>
+                    @if ($showEdit == 'true')
                     <li class="nav-item">
                         <a class="nav-link" id="tab2" data-toggle="tab" href="#edit-data" role="tab"><i class="icon icon-document-edit"></i>Edit Artikel</a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -87,7 +89,9 @@
                 </div>
             </div>
             <!-- Edit Artikel -->
-            @include('pages.masterArtikel.belumTerverifikasi.edit')
+            @if ($showEdit == 'true')
+                @include('pages.masterArtikel.belumTerverifikasi.edit')
+            @endif
         </div>
     </div>
     <div class="modal fade" id="unpublish" tabindex="-1" role="dialog">

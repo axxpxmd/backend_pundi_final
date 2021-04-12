@@ -74,7 +74,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Master Article
     Route::namespace('MasterArtikel')->name('artikel.')->group(function () {
-        // Semua
+        // Artikel
         Route::resource('semua', 'SemuaArtikelController');
         Route::post('semua/api', 'SemuaArtikelController@api')->name('semua.api');
         // Publish
