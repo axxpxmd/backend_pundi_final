@@ -20,13 +20,23 @@
                 <div class="card no-b">
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="category_id" class="col-form-label s-12 col-md-3 text-right font-weight-bold">Kategori :</label>
+                            <label for="category_id" class="col-form-label s-12 col-md-4 text-right font-weight-bold">Kategori :</label>
                             <div class="col-sm-4">
                                 <select name="category_id" id="category_id" class="select2 form-control r-0 light s-12" onchange="selectOnChange()">
                                     <option value="0">Semua</option>
                                     @foreach ($categorys as $i)
                                     <option value="{{ $i->id }}">{{ $i->n_category }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                        </div> 
+                        <div class="form-group row" style="margin-top: -10px">
+                            <label for="status" class="col-form-label s-12 col-md-4 text-right font-weight-bold">Status :</label>
+                            <div class="col-sm-4">
+                                <select name="status" id="status" class="select2 form-control r-0 light s-12" onchange="selectOnChange()">
+                                    <option value="99">Semua</option>
+                                    <option value="0">Belum Publish</option>
+                                    <option value="1">Sudah Publish</option>
                                 </select>
                             </div>
                         </div> 
@@ -78,7 +88,7 @@
             method: 'POST',
             data: function (data) {
                 data.category_id = $('#category_id').val();
-                data.sub_category_id = $('#sub_category_id').val();
+                data.status = $('#status').val();
             }
         },
         columns: [

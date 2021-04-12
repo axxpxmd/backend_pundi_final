@@ -18,6 +18,7 @@ use DataTables;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 // Models
 use App\Models\Article;
@@ -49,6 +50,7 @@ class SemuaArtikelController extends Controller
     {
         // get param
         $category_id = $request->category_id;
+        $status = $request->status;
 
         $artikel = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
             ->orderBy('id', 'DESC')
@@ -61,10 +63,23 @@ class SemuaArtikelController extends Controller
                 ->get();
         }
 
+        if ($status != 99) {
+            $artikel = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
+                ->where('status', $status)
+                ->orderBy('id', 'DESC')
+                ->get();
+            if ($status != 99 && $category_id != 0) {
+                $artikel = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
+                    ->where('status', $status)
+                    ->where('category_id', $category_id)
+                    ->orderBy('id', 'DESC')
+                    ->get();
+            }
+        }
+
         return DataTables::of($artikel)
             ->addColumn('action', function ($p) {
                 return "
-                    <a href='#' onclick='show(" . $p->id . ")' title='show data'><i class='icon icon-eye3 mr-1'></i></a>
                     <a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Permission'><i class='icon icon-remove'></i></a>
                 ";
             })
@@ -97,7 +112,6 @@ class SemuaArtikelController extends Controller
         $showEdit = 'false';
 
         $article = Article::find($id);
-        // dd($article->author->photo);
 
         return view('pages.masterArtikel.show', compact(
             'route',
@@ -106,5 +120,23 @@ class SemuaArtikelController extends Controller
             'article',
             'showEdit'
         ));
+    }
+
+    public function destroy($id)
+    {
+        $article = Article::findOrFail($id);
+
+        // Delete old Photo from Storage
+        $exist = $article->image;
+        if ($exist != null) {
+            Storage::disk('ftp')->delete($this->pathArticle . $exist);
+        }
+
+        // delete from table
+        $article->delete();
+
+        return response()->json([
+            'message' => 'Artikel berhasil dihapus.'
+        ]);
     }
 }

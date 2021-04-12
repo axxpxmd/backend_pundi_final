@@ -114,6 +114,7 @@ class UnverifikasiController extends Controller
         ]);
 
         // get param
+        $tag = $request->tag;
         $title = $request->title;
         $content = $request->content;
         $editor_id = $request->editor_id;
@@ -141,11 +142,13 @@ class UnverifikasiController extends Controller
                 'title' => $title,
                 'content' => $content,
                 'image' => $fileName,
+                'tag' => $tag,
                 'editor_id' => $editor_id
             ]);
         } else {
             $article->update([
                 'title' => $title,
+                'tag' => $tag,
                 'content' => $content,
                 'editor_id' => $editor_id
             ]);

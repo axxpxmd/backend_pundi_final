@@ -50,6 +50,11 @@
                             <input type="text" name="title" class="form-control col-md-12" value="{{ $article->title }}" autocomplete="off" required/>
                         </div>
                         <div class="mt-2 ml-3">
+                            <label for="tag" class="fs-14 font-weight-bold">Tagar</label>
+                            <input type="text" name="tag" class="form-control col-md-12" value="{{ $article->tag }}" autocomplete="off" required/>
+                            <i class="text-danger fs-11">Pisahkan dengan koma</i>
+                        </div>
+                        <div class="mt-2 ml-3">
                             <label for="content" class="fs-14 font-weight-bold">Isi</label>
                             <textarea name="content" id="editor">{{ $article->content }}</textarea>
                         </div>

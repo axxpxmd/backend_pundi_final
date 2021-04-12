@@ -70,7 +70,7 @@
                 <span>Artikel</span>
             </a>
         </li>
-        <li class="treeview">
+        {{-- <li class="treeview">
             <a href="#">
                 <i class="icon icon-documents purple-text s-18"></i><span>Posisi Artikel</span><i class="icon icon-angle-left s-18 pull-right"></i>
             </a>
@@ -81,7 +81,7 @@
                 <li><a href="panel-page-dashboard1-rtl.html"><i class="icon icon-file-o"></i>Artikel 4</a></li>
                 <li><a href="panel-page-dashboard1-rtl.html"><i class="icon icon-file-o"></i>Artikel 5</a></li>
             </ul>
-        </li>
+        </li> --}}
     </li>
     <li class="header light"><strong>GAMBAR</strong></li>
     <li class="no-b">
@@ -89,7 +89,7 @@
             <i class="icon icon-picture-o text-blue s-18"></i> 
             <span>Logo</span>
         </a>
-        <a href="#">
+        <a href="{{ route("gambar.poster.index") }}">
             <i class="icon icon-file-picture-o amber-text s-18"></i> 
             <span>Poster</span>
         </a>
