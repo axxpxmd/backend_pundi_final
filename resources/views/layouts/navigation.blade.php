@@ -1,3 +1,6 @@
+@php
+    $articleNotPublish = App\Models\Article::where('status', 0)->count();
+@endphp
 <ul class="sidebar-menu">
     <li class="header"><strong>MAIN NAVIGATION</strong></li>
     <li>
@@ -62,6 +65,7 @@
             <a href="{{ route('artikel.publish.index') }}">
                 <i class="icon icon-clipboard-upload cyan-text s-18"></i> 
                 <span>Publish Artikel</span>
+                <span class="badge badge-danger pull-right">{{ $articleNotPublish }}</span>
             </a>
         </li>
         <li class="no-b">
