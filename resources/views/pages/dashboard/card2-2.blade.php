@@ -42,7 +42,7 @@
                                         <tr>
                                             <th width="40" class="text-center">No</th>
                                             <th>Judul</th>
-                                            <th>Dilihta</th>
+                                            <th>Dilihat</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -89,10 +89,10 @@
     </li>
     <li class="header light"><strong>GAMBAR</strong></li>
     <li class="no-b">
-        <a href="#">
+        {{-- <a href="#">
             <i class="icon icon-picture-o text-blue s-18"></i> 
             <span>Logo</span>
-        </a>
+        </a> --}}
         <a href="{{ route("gambar.poster.index") }}">
             <i class="icon icon-file-picture-o amber-text s-18"></i> 
             <span>Poster</span>
