@@ -154,6 +154,7 @@
         $('#txtAction').html('');
         $('#result').attr({ 'src': '-', 'alt': ''});
         $('#preview').attr({ 'src': '-', 'alt': ''});
+        $('#changeText').html('Browse Image')
         $('#reset').show();
     }
 
@@ -205,6 +206,7 @@
         $('#reset').hide();
         $('#result').attr({ 'src': '-', 'alt': ''});
         $('#preview').attr({ 'src': '-', 'alt': ''});
+        $('#changeText').html('Browse Image')   
         $('input[name=_method]').val('PATCH');
         $.get("{{ route($route.'edit', ':id') }}".replace(':id', id), function(data){
             $('#id').val(data.id);

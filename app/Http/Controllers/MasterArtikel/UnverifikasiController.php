@@ -161,14 +161,26 @@ class UnverifikasiController extends Controller
 
     public function publish($id)
     {
+        $data = Article::find($id);
+
         $time = Carbon::now();
         $release_date = $time->toDateTimeString();
 
-        Article::where('id', $id)->update([
-            'status' => 1,
-            'editor_id' => Auth::user()->id,
-            'release_date' => $release_date
-        ]);
+        /**
+         * * Check release_date, if null create release_date
+         */
+        if ($data->release_date == null) {
+            $data->update([
+                'status' => 1,
+                'editor_id' => Auth::user()->id,
+                'release_date' => $release_date
+            ]);
+        } else {
+            $data->update([
+                'status' => 1,
+                'editor_id' => Auth::user()->id,
+            ]);
+        }
 
         return redirect()
             ->route($this->route . 'show', $id)
