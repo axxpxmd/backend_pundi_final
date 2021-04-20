@@ -9,7 +9,7 @@
             <span>Dashboard</span>
         </a>
     </li>
-    @can('master-role')
+    @can('role')
     <li class="header light"><strong>ROLE</strong></li>
     <li class="no-b">
         <a href="{{ route('master-role.permission.index') }}">
@@ -24,6 +24,7 @@
         </a>
     </li>
     @endcan
+    @can('pengguna')
     <li class="header light"><strong>PENGGUNA</strong></li>
     <li class="no-b">
         <a href="{{ route('pengguna.index') }}">
@@ -31,6 +32,8 @@
             <span>Pengguna</span>
         </a>
     </li>
+    @endcan
+    @can('kategori')
     <li class="header light"><strong>KATEGORI</strong></li>
     <li class="no-b">
         <a href="{{ route('kategori.index') }}">
@@ -46,6 +49,8 @@
             <span>Judul Section</span>
         </a>
     </li>
+    @endcan
+    @can('user')
     <li class="header light"><strong>USER</strong></li>
     <li class="no-b">
         <a href="{{ route('master-user.index') }}">
@@ -53,6 +58,8 @@
             <span>User</span>
         </a>
     </li>
+    @endcan
+    @can('artikel')
     <li class="header light"><strong>ARTIKEL</strong></li>
     <li class="no-b">
         {{-- <li class="no-b">
@@ -87,6 +94,8 @@
             </ul>
         </li> --}}
     </li>
+    @endcan
+    @can('gambar')
     <li class="header light"><strong>GAMBAR</strong></li>
     <li class="no-b">
         {{-- <a href="#">
@@ -98,7 +107,9 @@
             <span>Poster</span>
         </a>
     </li>
-    <li class="header light"><strong>KONSULTASI</strong></li>
+    @endcan
+    @can('konsultasi')
+    {{-- <li class="header light"><strong>KONSULTASI</strong></li>
     <li class="no-b">
         <a href="#">
             <i class="icon icon-question-circle-o green-text s-18"></i> 
@@ -108,7 +119,9 @@
             <i class="icon icon-document-text3 amber-text s-18"></i> 
             <span>Konsultasi</span>
         </a>
-    </li>
+    </li> --}}
+    @endcan
+    @can('komen')
     <li class="header light"><strong>KOMEN</strong></li>
     <li class="no-b">
         <a href="{{ route('komentar.index') }}">
@@ -116,4 +129,5 @@
             <span>Komentar</span>
         </a>
     </li>
+    @endcan
 </ul>
