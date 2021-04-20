@@ -1,5 +1,13 @@
 @php
+// Time
+$time  = \Carbon\Carbon::now();
+$month = $time->month;
+
 $template = App\Models\Template::select('id', 'logo', 'logo_title', 'logo_auth')->first();
+$questions = App\Models\Question::select('name', 'question', 'status', 'id')->where('status', 0)->get();
+$consultations = App\Models\Consultation::select('name', 'consultation', 'status', 'id')->where('status', 0)->get();
+$newUser = App\Models\userPundi::whereRaw('extract(month from created_at) = ?', [$month])->count();
+$newArticle = App\Models\Article::whereRaw('extract(month from created_at) = ?', [$month])->count();
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

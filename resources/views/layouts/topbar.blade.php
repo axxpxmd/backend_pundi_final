@@ -30,6 +30,84 @@
             </div>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
+                    <!-- Messages -->
+                    <li class="dropdown custom-dropdown messages-menu">
+                        <a href="#" class="nav-link" data-toggle="dropdown">
+                            <i class="icon-message "></i>
+                            <span class="badge badge-success badge-mini rounded-circle">{{ $questions->count() + $consultations->count() }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <ul class="menu pl-2 pr-2">
+                                    <!-- message from question -->
+                                    <li class="header font-weight-bold bg-light p-1 mt-1">({{ $questions->count() }}) Pertanyaan</li>
+                                    @forelse ($questions->take(3) as $i)
+                                    <li>
+                                        <a href="#">
+                                            <div class="avatar float-left mr-3">
+                                                <span class="avatar-letter avatar-letter-{{ strtolower(substr($i->name,0,1)) }} circle"></span>
+                                            </div>
+                                            <h4>
+                                                {{ $i->name }}
+                                            </h4>
+                                            <p class="text-truncate" style="max-width: 250px;">{{ $i->question }}</p>
+                                        </a>
+                                    </li>
+                                    @empty
+                                    <p class="text-center s-12">Tidak ada data</p>
+                                    @endforelse
+                                    @if ($questions->count() > 3)
+                                    <li class="footer s-12 text-center"><a href="#">Lihat Semua +{{ $questions->count() - 3 }}</a></li>
+                                    @endif
+                                    
+                                    <!-- message from consultation -->
+                                    <li class="header font-weight-bold bg-light p-1">({{ $consultations->count() }}) Konsultasi</li>
+                                    @forelse ($consultations->take(3) as $c)
+                                    <li>
+                                        <a href="#">
+                                            <div class="avatar float-left mr-3">
+                                                <span class="avatar-letter avatar-letter-{{ strtolower(substr($c->name,0,1)) }} circle"></span>
+                                            </div>
+                                            <h4>
+                                                {{ $c->name }}
+                                            </h4>
+                                            <p class="text-truncate" style="max-width: 250px;">{{ $c->consultation }}</p>
+                                        </a>
+                                    </li>
+                                    @empty
+                                    <p class="text-center s-12">Tidak ada data</p>
+                                    @endforelse
+                                    @if ($consultations->count() > 3)
+                                    <li class="footer s-12 text-center"><a href="#">Lihat Semua + {{ $consultations->count() - 3 }}</a></li>
+                                    @endif
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Notifications -->
+                    <li class="dropdown custom-dropdown notifications-menu">
+                        <a href="#" class=" nav-link" data-toggle="dropdown" aria-expanded="false">
+                            <i class="icon-notifications "></i>
+                            <span class="badge badge-danger badge-mini rounded-circle">{{ $newUser + $newArticle }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="header text-black text-center">{{ $newUser + $newArticle }} Pemberitahuan</li>
+                            <li>
+                                <ul class="menu">
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon icon-data_usage text-success"></i> {{ $newUser }} user baru bulan ini
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon icon-data_usage text-danger"></i> {{ $newArticle }} artikel baru bulan ini
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="dropdown custom-dropdown user user-menu ">
                         <a href="#" class="nav-link" data-toggle="dropdown">
                             <img height="30" width="30" style="margin-top: -10px" class="rounded-circle img-circular" src="{{ config('app.ftp_src').'images/ava/'.Auth::user()->adminDetail->photo }}" alt="User Image">
