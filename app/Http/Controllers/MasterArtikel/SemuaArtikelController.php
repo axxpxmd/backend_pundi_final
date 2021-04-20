@@ -79,9 +79,7 @@ class SemuaArtikelController extends Controller
 
         return DataTables::of($artikel)
             ->addColumn('action', function ($p) {
-                return "
-                    <a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Permission'><i class='icon icon-remove'></i></a>
-                ";
+                return "<a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Permission'><i class='icon icon-remove'></i></a>";
             })
             ->editColumn('title', function ($p) {
                 return "<a href='" . route($this->route . 'show', $p->id) . "' class='text-primary' title='Show Data'>" . $p->title . "</a>";

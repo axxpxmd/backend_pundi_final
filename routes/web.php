@@ -84,9 +84,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('publis/un-publish-artikel/{id}', 'UnverifikasiController@unPublish')->name('publish.unPublishArticle');
     });
 
+    // Master Gambar
     Route::namespace('MasterGambar')->name('gambar.')->group(function () {
         // Poster
         Route::resource('poster', 'PosterController');
         Route::post('poster/api', 'PosterController@api')->name('poster.api');
     });
+
+    Route::resource('komentar', 'MasterKomen\KomenController');
+    Route::post('komentar/api', 'MasterKomen\KomenController@api')->name('komentar.api');
 });

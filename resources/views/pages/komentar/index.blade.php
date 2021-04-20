@@ -7,7 +7,7 @@
             <div class="row p-t-b-10 ">
                 <div class="col">
                     <h4>
-                        <i class="icon icon-user-circle-o mr-2"></i>
+                        <i class="icon icon-clipboard-upload"></i>
                         {{ $title }}
                     </h4>
                 </div>
@@ -15,7 +15,7 @@
         </div>
     </header>
     <div class="container-fluid relative animatedParent animateOnce">
-        <div class="tab-content my-3" id="pills-tabContent">
+        <div class="tab-content mt-2" id="pills-tabContent">
             <div class="tab-pane animated fadeInUpShort show active" id="semua-data" role="tabpanel">
                 <div class="row">
                     <div class="col-md-12">
@@ -26,8 +26,7 @@
                                         <thead>
                                             <th width="4%">No</th>
                                             <th>Nama</th>
-                                            <th width="30%">Email</th>
-                                            <th width="10%">No Telp</th>
+                                            <th>Komentar</th>
                                             <th width="4%"></th>
                                         </thead>
                                         <tbody></tbody>
@@ -41,14 +40,14 @@
         </div>
     </div>
 </div>
-@include('pages.masterUser.show')
 @endsection
 @section('script')
 <script type="text/javascript">
     var table = $('#dataTable').dataTable({
         processing: true,
         serverSide: true,
-        pageLength: 20,
+        order: [ 0, 'asc' ],
+        pageLength: 15,
         ajax: {
             url: "{{ route($route.'api') }}",
             method: 'POST'
@@ -56,38 +55,16 @@
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
             {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'no_telp', name: 'no_telp'},
+            {data: 'content', name: 'content'},
             {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
         ]
     });
 
-    function show(id) {
-        $('#myModal').modal('show');
-        $.get("{{ route($route.'show', ':id') }}".replace(':id', id), function(data){
-            $('#namaLengkap').html(data.name);
-            $('#email_').html(data.email);
-            $('#firstName').html(data.first_name);
-            $('#lastName').html(data.last_name);
-            $('#noTelp').html(data.no_telp);
-            $('#bio_').html(data.bio);
-            $('#facebook_').html(data.facebook);
-            $('#twitter_').html(data.twitter);
-            $('#instagram_').html(data.instagram);
-            $('#birthDate').html(data.birth_date);
-            $('#gender_').html(data.gender);
-            var path = "{{ config('app.ftp_src').$path }}" + data.photo;
-            $('#photo_').attr({'src': path});
-        }, "JSON").fail(function(){
-            reload();
-        });
-    }
-
     function remove(id){
         $.confirm({
             title: '',
-            content: 'Artikel yang telah dibuat oleh user ini akan terhapus juga, Apakah anda yakin akan menghapus data ini ?',
-            icon: 'icon icon-exclamation amber-text',
+            content: 'Apakah Anda yakin akan menghapus data ini ?',
+            icon: 'icon icon-question amber-text',
             theme: 'modern',
             closeIcon: true,
             animation: 'scale',

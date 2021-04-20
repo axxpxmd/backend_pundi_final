@@ -111,7 +111,7 @@
     </li>
     <li class="header light"><strong>KOMEN</strong></li>
     <li class="no-b">
-        <a href="#">
+        <a href="{{ route('komentar.index') }}">
             <i class="icon icon-comments-o blue-text s-18"></i> 
             <span>Komentar</span>
         </a>
