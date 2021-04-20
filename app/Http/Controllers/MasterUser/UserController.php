@@ -17,8 +17,10 @@ namespace App\Http\Controllers\MasterUser;
 use DataTables;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
-// Model
+// Models
+use App\Models\Article;
 use App\Models\userPundi;
 
 class UserController extends Controller
@@ -64,8 +66,42 @@ class UserController extends Controller
         return $userPundi;
     }
 
-    public function destroy()
+    public function destroy($id)
     {
+        /* Tahapan : 
+         * 1. users
+         * 2. articles
+         */
+
+        // Tahap 1
+        $user = userPundi::findOrFail($id);
+
+        if ($user->photo != null) {
+            // Proses Delete Foto
+            $exist = $user->photo;
+            $path  = "images/ava/" . $exist;
+            Storage::disk('ftp')->delete($path);
+        }
+
+        // Tahap 2
+        $articles = Article::where('author_id', $id)->get();
+
+        if ($articles != null) {
+            foreach ($articles as $i) {
+                if ($i->image != null) {
+                    // Proses Delete Foto
+                    $exist = $i->image;
+                    $path  = "images/artikel/" . $exist;
+                    Storage::disk('ftp')->delete($path);
+
+                    $articles = Article::where('id', $i->id)->delete();
+                }
+            }
+        }
+
+        // Tahap 1 (delete)
+        $user->delete();
+
         return response()->json([
             'message' => 'Data ' . $this->title . ' berhasil terhapus.'
         ]);
