@@ -57,7 +57,7 @@
                                     <p class="text-center s-12">Tidak ada data</p>
                                     @endforelse
                                     @if ($questions->count() > 3)
-                                    <li class="footer s-12 text-center"><a href="#">Lihat Semua +{{ $questions->count() - 3 }}</a></li>
+                                    <li class="footer s-12 text-center"><a href="#" class="text-primary">Lihat Semua +{{ $questions->count() - 3 }}</a></li>
                                     @endif
                                     
                                     <!-- message from consultation -->
@@ -78,7 +78,7 @@
                                     <p class="text-center s-12">Tidak ada data</p>
                                     @endforelse
                                     @if ($consultations->count() > 3)
-                                    <li class="footer s-12 text-center"><a href="#">Lihat Semua + {{ $consultations->count() - 3 }}</a></li>
+                                    <li class="footer s-12 text-center"><a href="#" class="text-primary">Lihat Semua + {{ $consultations->count() - 3 }}</a></li>
                                     @endif
                                 </ul>
                             </li>
@@ -91,17 +91,17 @@
                             <span class="badge badge-danger badge-mini rounded-circle">{{ $newUser + $newArticle }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li class="header text-black text-center">{{ $newUser + $newArticle }} Pemberitahuan</li>
+                            <li class="header text-center text-black font-weight-bold">{{ $newUser + $newArticle }} Pemberitahuan</li>
                             <li>
                                 <ul class="menu">
                                     <li>
                                         <a href="#">
-                                            <i class="icon icon-data_usage text-success"></i> {{ $newUser }} user baru bulan ini
+                                            <i class="icon icon-data_usage text-success"></i> {{ $newUser }} User baru bulan ini
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="icon icon-data_usage text-danger"></i> {{ $newArticle }} artikel baru bulan ini
+                                            <i class="icon icon-data_usage text-danger"></i> {{ $newArticle }} Artikel baru bulan ini
                                         </a>
                                     </li>
                                 </ul>
