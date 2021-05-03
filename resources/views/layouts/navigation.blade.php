@@ -1,6 +1,3 @@
-@php
-    $articleNotPublish = App\Models\Article::where('status', 0)->count();
-@endphp
 <ul class="sidebar-menu">
     <li class="header"><strong>MAIN NAVIGATION</strong></li>
     <li>
@@ -125,8 +122,14 @@
     <li class="header light"><strong>KOMEN</strong></li>
     <li class="no-b">
         <a href="{{ route('komentar.index') }}">
-            <i class="icon icon-comments-o blue-text s-18"></i> 
+            <i class="icon icon-comment-o blue-text s-18"></i> 
             <span>Komentar</span>
+        </a>
+    </li>
+    <li class="no-b">
+        <a href="">
+            <i class="icon icon-comments-o blue-text s-18"></i> 
+            <span>Balasan Komentar</span>
         </a>
     </li>
     @endcan

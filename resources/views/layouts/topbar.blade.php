@@ -88,7 +88,7 @@
                     <li class="dropdown custom-dropdown notifications-menu">
                         <a href="#" class=" nav-link" data-toggle="dropdown" aria-expanded="false">
                             <i class="icon-notifications "></i>
-                            <span class="badge badge-danger badge-mini rounded-circle">{{ $newUser + $newArticle }}</span>
+                            <span class="badge badge-danger badge-mini rounded-circle">{{ $newUser + $newArticle + $newComment }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="header text-center text-black font-weight-bold">{{ $newUser + $newArticle }} Pemberitahuan</li>
@@ -102,6 +102,11 @@
                                     <li>
                                         <a href="#">
                                             <i class="icon icon-data_usage text-danger"></i> {{ $newArticle }} Artikel baru bulan ini
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon icon-data_usage text-primary"></i> {{ $newComment }} Komen baru bulan ini
                                         </a>
                                     </li>
                                 </ul>

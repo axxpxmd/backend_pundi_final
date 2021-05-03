@@ -45,13 +45,35 @@ class KomenController extends Controller
 
         return DataTables::of($comment)
             ->addColumn('action', function ($p) {
-                return "<a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Permission'><i class='icon icon-remove'></i></a>";
+                if ($p->status == 1) {
+                    return '-';
+                } else {
+                    return "<a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Permission'><i class='icon icon-remove'></i></a>";
+                }
             })
             ->addColumn('name', function ($p) {
                 return $p->userPundi->name;
             })
+            ->addColumn('status', function ($p) {
+                if ($p->status == 1) {
+                    return '<span class="badge badge-danger">Terhapus</span>';
+                } else {
+                    return '-';
+                }
+            })
             ->addIndexColumn()
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'status'])
             ->toJson();
+    }
+
+    public function destroy($id)
+    {
+        Comment::where('id', $id)->update([
+            'status' => 1
+        ]);
+
+        return response()->json([
+            'message' => 'Artikel berhasil dihapus.'
+        ]);
     }
 }

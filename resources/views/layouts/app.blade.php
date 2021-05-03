@@ -8,6 +8,8 @@ $questions = App\Models\Question::select('name', 'question', 'status', 'id')->wh
 $consultations = App\Models\Consultation::select('name', 'consultation', 'status', 'id')->where('status', 0)->get();
 $newUser = App\Models\userPundi::whereRaw('extract(month from created_at) = ?', [$month])->count();
 $newArticle = App\Models\Article::whereRaw('extract(month from created_at) = ?', [$month])->count();
+$newComment = App\Models\Comment::whereRaw('extract(month from created_at) = ?', [$month])->count();
+$articleNotPublish = App\Models\Article::where('status', 0)->count();
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

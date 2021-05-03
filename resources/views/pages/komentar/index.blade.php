@@ -7,7 +7,7 @@
             <div class="row p-t-b-10 ">
                 <div class="col">
                     <h4>
-                        <i class="icon icon-comments-o"></i>
+                        <i class="icon icon-comment-o"></i>
                         {{ $title }}
                     </h4>
                 </div>
@@ -24,10 +24,11 @@
                                 <div class="table-responsive">
                                     <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
-                                            <th width="4%">No</th>
-                                            <th>Nama</th>
-                                            <th>Komentar</th>
-                                            <th width="4%"></th>
+                                            <th width="5%">No</th>
+                                            <th width="20%">Nama</th>
+                                            <th width="60%">Komentar</th>
+                                            <th width="8%">Status</th>
+                                            <th width="5%"></th>
                                         </thead>
                                         <tbody></tbody>
                                     </table>
@@ -56,6 +57,7 @@
             {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
             {data: 'name', name: 'name'},
             {data: 'content', name: 'content'},
+            {data: 'status', name: 'status', className: 'text-center'},
             {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
         ]
     });

@@ -91,6 +91,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('poster/api', 'PosterController@api')->name('poster.api');
     });
 
-    Route::resource('komentar', 'MasterKomen\KomenController');
-    Route::post('komentar/api', 'MasterKomen\KomenController@api')->name('komentar.api');
+    Route::namespace('MasterKomen')->group(function () {
+        Route::resource('komentar', 'KomenController');
+        Route::post('komentar/api', 'KomenController@api')->name('komentar.api');
+    });
 });
