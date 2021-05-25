@@ -126,11 +126,5 @@
             <span>Komentar</span>
         </a>
     </li>
-    <li class="no-b">
-        <a href="">
-            <i class="icon icon-comments-o blue-text s-18"></i> 
-            <span>Balasan Komentar</span>
-        </a>
-    </li>
     @endcan
 </ul>

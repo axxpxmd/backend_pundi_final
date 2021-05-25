@@ -56,7 +56,7 @@ class KomenController extends Controller
             })
             ->addColumn('status', function ($p) {
                 if ($p->status == 1) {
-                    return '<span class="badge badge-danger">Terhapus</span>';
+                    return '<span class="badge badge-danger">Ditarik</span>';
                 } else {
                     return '-';
                 }
@@ -73,7 +73,7 @@ class KomenController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Artikel berhasil dihapus.'
+            'message' => 'Komentar berhasil ditarik.'
         ]);
     }
 }
