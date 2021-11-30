@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Storage;
 // Models
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\SubCategory;
 
 class UnverifikasiController extends Controller
 {
@@ -97,13 +98,23 @@ class UnverifikasiController extends Controller
 
         $article = Article::find($id);
 
+        $categorys = Category::select('id', 'n_category')->get();
+
         return view('pages.masterArtikel.show', compact(
             'route',
             'title',
             'path',
             'article',
-            'showEdit'
+            'showEdit',
+            'categorys'
         ));
+    }
+
+    public function subCategoryByCategory($category_id)
+    {
+        $data = SubCategory::select('id', 'n_sub_category', 'category_id')->where('category_id', $category_id)->get();
+
+        return $data;
     }
 
     public function update(Request $request, $id)
@@ -118,6 +129,7 @@ class UnverifikasiController extends Controller
         $title = $request->title;
         $content = $request->content;
         $editor_id = $request->editor_id;
+        $title_slug = str_slug($title, '-');
 
         $article = Article::where('id', $id)->first();
 
@@ -140,6 +152,7 @@ class UnverifikasiController extends Controller
             // Saved to articles
             $article->update([
                 'title' => $title,
+                'title_slug' => $title_slug,
                 'content' => $content,
                 'image' => $fileName,
                 'tag' => $tag,
@@ -148,6 +161,7 @@ class UnverifikasiController extends Controller
         } else {
             $article->update([
                 'title' => $title,
+                'title_slug' => $title_slug,
                 'tag' => $tag,
                 'content' => $content,
                 'editor_id' => $editor_id

@@ -54,7 +54,7 @@
                                                 <input type="file" name="poster" id="file" class="input-file" onchange="tampilkanPreview(this,'preview')">
                                                 <label for="file" class="btn-tertiary js-labelFile col-md-8">
                                                     <i class="icon icon-image mr-2 m-b-1"></i>
-                                                    <span id="changeText" class="js-fileName">Pilih Gambar</span>
+                                                    <span id="changeText" class="js-fileName fs-11">Pilih Gambar</span>
                                                 </label>
                                                 <img id="result" class="d-none" width="150">
                                                 <hr>
@@ -154,11 +154,11 @@
         $('#txtAction').html('');
         $('#result').attr({ 'src': '-', 'alt': ''});
         $('#preview').attr({ 'src': '-', 'alt': ''});
-        $('#changeText').html('Browse Image')
+        $('#changeText').html('Pilih Gambar')
         $('#reset').show();
     }
 
-    add();
+    // add();
     $('#form').on('submit', function (e) {
         if ($(this)[0].checkValidity() === false) {
             event.preventDefault();

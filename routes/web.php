@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('publish/api', 'UnverifikasiController@api')->name('publish.api');
         Route::post('publish/publish-artikel/{id}', 'UnverifikasiController@publish')->name('publish.publishArticle');
         Route::post('publis/un-publish-artikel/{id}', 'UnverifikasiController@unPublish')->name('publish.unPublishArticle');
+        Route::get('publish/sub-category-by-category/{category_id}', 'UnverifikasiController@subCategoryByCategory')->name('publish.subCategoryByCategory');
     });
 
     // Master Gambar
