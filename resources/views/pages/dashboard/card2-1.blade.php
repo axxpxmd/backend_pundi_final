@@ -34,7 +34,7 @@
                                     <img src="{{ asset('images/template/logo.png') }}" width="50" alt="">
                                 </div>
                                 <div>
-                                    <strong><a href="http://pundi.or.id/" target="blank">PUNDI.OR.ID</a></strong>
+                                    <strong><a target="blank" href="http://pundi.or.id/" target="blank">PUNDI.OR.ID</a></strong>
                                 </div>
                                 <div>
                                     <small>Pegiat Pendidikan Indonesia</small>

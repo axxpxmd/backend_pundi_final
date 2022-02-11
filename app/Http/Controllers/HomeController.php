@@ -52,13 +52,15 @@ class HomeController extends Controller
         $kreativitasTotal = Article::wherecategory_id(3)->count();
         $serbaserbiTotal = Article::wherecategory_id(4)->count();
 
-        $totalView = Article::select('id', 'title', 'views')->orderBy('views', 'DESC')->get()->take(5);
+        $totalView = Article::with(['category', 'subCategory'])->select('id', 'title', 'views')->orderBy('views', 'DESC')->get()->take(5);
         $todayTotalView = CheckIp::select('*', DB::raw("count(article_id) as totalView"))
+            ->with('article')
             ->whereDate('created_at', $day)
             ->groupBy('article_id')
             ->orderBy('totalView', 'DESC')
             ->get();
         $monthTotalView = CheckIp::select('*', DB::raw("count(article_id) as totalView"))
+            ->with('article')
             ->whereRaw('extract(month from created_at) = ?', [$month])
             ->groupBy('article_id')
             ->orderBy('totalView', 'DESC')

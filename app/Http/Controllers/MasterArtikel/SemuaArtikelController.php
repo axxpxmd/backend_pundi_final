@@ -49,37 +49,26 @@ class SemuaArtikelController extends Controller
     public function api(Request $request)
     {
         // get param
-        $category_id = $request->category_id;
         $status = $request->status;
+        $category_id = $request->category_id;
 
-        $artikel = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
-            ->orderBy('id', 'DESC')
-            ->get();
+        $article = Article::with(['category', 'subCategory', 'author', 'editor'])
+            ->select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
+            ->orderBy('id', 'DESC');
 
         if ($category_id != 0) {
-            $artikel = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
-                ->where('category_id', $category_id)
-                ->orderBy('id', 'DESC')
-                ->get();
+            $datas = $article->where('category_id', $category_id);
         }
 
         if ($status != 99) {
-            $artikel = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
-                ->where('status', $status)
-                ->orderBy('id', 'DESC')
-                ->get();
-            if ($status != 99 && $category_id != 0) {
-                $artikel = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status')
-                    ->where('status', $status)
-                    ->where('category_id', $category_id)
-                    ->orderBy('id', 'DESC')
-                    ->get();
-            }
+            $datas = $article->where('status', $status);
         }
 
-        return DataTables::of($artikel)
+        $datas = $article->get();
+
+        return DataTables::of($datas)
             ->addColumn('action', function ($p) {
-                return "<a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Permission'><i class='icon icon-remove'></i></a>";
+                return "<a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Artikel'><i class='icon icon-remove'></i></a>";
             })
             ->editColumn('title', function ($p) {
                 return "<a href='" . route($this->route . 'show', $p->id) . "' class='text-primary' title='Show Data'>" . $p->title . "</a>";

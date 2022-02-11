@@ -56,23 +56,21 @@ class UnverifikasiController extends Controller
         // get param
         $category_id = $request->category_id;
 
-        $article = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status', 'created_at')
+        $article = Article::with(['category', 'subCategory', 'author', 'editor'])
+            ->select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status', 'created_at')
             ->where('status', 0)
-            ->orderBy('id', 'DESC')
-            ->get();
+            ->orderBy('id', 'DESC');
 
         if ($category_id != 0) {
-            $article = Article::select('id', 'title', 'author_id', 'category_id', 'sub_category_id', 'views', 'status', 'created_at')
-                ->where('status', 0)
-                ->where('category_id', $category_id)
-                ->orderBy('id', 'DESC')
-                ->get();
+            $datas = $article->where('category_id', $category_id);
         }
 
-        return DataTables::of($article)
+        $datas = $article->get();
+
+        return DataTables::of($datas)
             ->addColumn('action', function ($p) {
                 return "
-                    <a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Permission'><i class='icon icon-remove'></i></a>
+                    <a href='#' onclick='remove(" . $p->id . ")' class='text-danger mr-2' title='Hapus Artikel'><i class='icon icon-remove'></i></a>
                 ";
             })
             ->editColumn('title', function ($p) {
