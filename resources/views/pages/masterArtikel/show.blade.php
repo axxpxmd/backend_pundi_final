@@ -8,7 +8,7 @@
             <div class="row p-t-b-10 ">
                 <div class="col">
                     <h4>
-                        <i class="icon {{ $showEdit == 'true' ? 'icon-clipboard-upload' : 'icon-document' }}"></i>
+                        <i class="icon {{ $showEdit == 'true' ? 'icon-clipboard-upload' : 'icon-list' }}"></i>
                         Menampilkan Artikel
                     </h4>
                 </div>

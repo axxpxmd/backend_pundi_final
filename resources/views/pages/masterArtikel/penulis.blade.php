@@ -12,15 +12,15 @@
             <p class="mt-2 font-weight-bold" style="margin-bottom: -3px">{{ $article->author->name }}</p>
             <span>{{ $article->author->bio }}</span>
         </div>
-        <div class="mt-3 ml-3">
-            <div class="row">
-                <label class="col-sm-3 font-weight-bold fs-14">Email</label>
-                <label class="col-sm-8 fs-14">: {{ $article->author->email }}</label>
-            </div>
-            <div class="row">
-                <label class="col-sm-3 font-weight-bold fs-14">No Telp</label>
-                <label class="col-sm-8 fs-14">: {{ $article->author->no_telp }}</label>
-            </div>
-        </div>
+        <table class="ml-3 mt-3 table-responsive">
+            <tr>
+                <td><span class="font-weight-bold fs-14">Email</span></td>
+                <td><span class="fs-14">: {{ $article->author->email }}</span></td>
+            </tr>
+            <tr>
+                <td><span class="font-weight-bold fs-14">No Telp</span></td>
+                <td><span class="fs-14">: {{ $article->author->no_telp }}</span></td>
+            </tr>
+        </table>
     </div>
 </div>

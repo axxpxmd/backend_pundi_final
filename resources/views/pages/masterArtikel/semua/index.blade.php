@@ -7,7 +7,7 @@
             <div class="row p-t-b-10 ">
                 <div class="col">
                     <h4>
-                        <i class="icon icon-document "></i>
+                        <i class="icon icon-list"></i>
                         {{ $title }}
                     </h4>
                 </div>

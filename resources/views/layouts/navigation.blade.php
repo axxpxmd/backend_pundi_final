@@ -59,12 +59,6 @@
     @can('artikel')
     <li class="header light"><strong>ARTIKEL</strong></li>
     <li class="no-b">
-        {{-- <li class="no-b">
-            <a href="#">
-                <i class="icon icon-document-checked text-success s-18"></i> 
-                <span>Terverifikasi</span>
-            </a>
-        </li> --}}
         <li class="no-b">
             <a href="{{ route('artikel.publish.index') }}">
                 <i class="icon icon-clipboard-upload cyan-text s-18"></i> 
@@ -74,31 +68,15 @@
         </li>
         <li class="no-b">
             <a href="{{ route('artikel.semua.index') }}">
-                <i class="icon icon-document text-danger s-18"></i>  
+                <i class="icon icon-list text-danger s-18"></i>  
                 <span>Artikel</span>
             </a>
         </li>
-        {{-- <li class="treeview">
-            <a href="#">
-                <i class="icon icon-documents purple-text s-18"></i><span>Posisi Artikel</span><i class="icon icon-angle-left s-18 pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="panel-page-dashboard1-rtl.html"><i class="icon icon-file-o"></i>Artikel 1</a></li>
-                <li><a href="panel-page-dashboard1-rtl.html"><i class="icon icon-file-o"></i>Artikel 2</a></li>
-                <li><a href="panel-page-dashboard1-rtl.html"><i class="icon icon-file-o"></i>Artikel 3</a></li>
-                <li><a href="panel-page-dashboard1-rtl.html"><i class="icon icon-file-o"></i>Artikel 4</a></li>
-                <li><a href="panel-page-dashboard1-rtl.html"><i class="icon icon-file-o"></i>Artikel 5</a></li>
-            </ul>
-        </li> --}}
     </li>
     @endcan
     @can('gambar')
     <li class="header light"><strong>GAMBAR</strong></li>
     <li class="no-b">
-        {{-- <a href="#">
-            <i class="icon icon-picture-o text-blue s-18"></i> 
-            <span>Logo</span>
-        </a> --}}
         <a href="{{ route("gambar.poster.index") }}">
             <i class="icon icon-file-picture-o amber-text s-18"></i> 
             <span>Poster</span>
