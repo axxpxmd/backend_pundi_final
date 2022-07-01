@@ -43,7 +43,7 @@
                                     <li class="header font-weight-bold bg-light p-1 mt-1">({{ $questions->count() }}) Pertanyaan</li>
                                     @forelse ($questions->take(3) as $i)
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('pertanyaan.show', $i->id) }}">
                                             <div class="avatar float-left mr-3">
                                                 <span class="avatar-letter avatar-letter-{{ strtolower(substr($i->name,0,1)) }} circle"></span>
                                             </div>
@@ -57,7 +57,7 @@
                                     <p class="text-center s-12">Tidak ada data</p>
                                     @endforelse
                                     @if ($questions->count() > 3)
-                                    <li class="footer s-12 text-center"><a href="#" class="text-primary">Lihat Semua +{{ $questions->count() - 3 }}</a></li>
+                                    <li class="footer s-12 text-center"><a href="{{ route('pertanyaan.index') }}" class="text-primary">Lihat Semua +{{ $questions->count() - 3 }}</a></li>
                                     @endif
                                     
                                     <!-- message from consultation -->

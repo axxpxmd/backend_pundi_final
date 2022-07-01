@@ -21,7 +21,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 // Models
-use App\Models\Comment;
 use App\Models\Consultation;
 
 class KonsultasiController extends Controller

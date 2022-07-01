@@ -86,7 +86,7 @@
     @can('konsultasi')
     <li class="header light"><strong>KONSULTASI</strong></li>
     <li class="no-b">
-        <a href="#">
+        <a href="{{ route('pertanyaan.index') }}">
             <i class="icon icon-question-circle-o green-text s-18"></i> 
             <span>Pertanyaan</span>
         </a>

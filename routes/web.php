@@ -98,8 +98,14 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::namespace('MasterKonsultasi')->group(function () {
+        // Konsultasi
         Route::resource('konsultasi', 'KonsultasiController');
         Route::post('konsultasi/api', 'KonsultasiController@api')->name('konsultasi.api');
         Route::get('konsultasi/update-status/{id}', 'KonsultasiController@updateStatus')->name('konsultasi.update-status');
+
+        // Pertanyaan
+        Route::resource('pertanyaan', 'PertanyaanController');
+        Route::post('pertanyaan/api', 'PertanyaanController@api')->name('pertanyaan.api');
+        Route::get('pertanyaan/update-status/{id}', 'PertanyaanController@updateStatus')->name('pertanyaan.update-status');
     });
 });
