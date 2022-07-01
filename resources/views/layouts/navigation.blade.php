@@ -84,7 +84,7 @@
     </li>
     @endcan
     @can('konsultasi')
-    {{-- <li class="header light"><strong>KONSULTASI</strong></li>
+    <li class="header light"><strong>KONSULTASI</strong></li>
     <li class="no-b">
         <a href="#">
             <i class="icon icon-question-circle-o green-text s-18"></i> 
@@ -94,7 +94,7 @@
             <i class="icon icon-document-text3 amber-text s-18"></i> 
             <span>Konsultasi</span>
         </a>
-    </li> --}}
+    </li>
     @endcan
     @can('komen')
     <li class="header light"><strong>KOMEN</strong></li>

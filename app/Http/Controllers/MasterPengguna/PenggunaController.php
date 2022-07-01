@@ -52,7 +52,7 @@ class PenggunaController extends Controller
 
     public function api()
     {
-        $pengguna = AdminDetail::all();
+        $pengguna = AdminDetail::with(['admin'])->get();
 
         return DataTables::of($pengguna)
             ->addColumn('action', function ($p) {
@@ -139,7 +139,7 @@ class PenggunaController extends Controller
         $title = $this->title;
         $path  = $this->path;
 
-        $pengguna = AdminDetail::find($id);
+        $pengguna = AdminDetail::with(['admin', 'modelHasRole'])->where('id', $id)->first();
         $roles = Role::select('id', 'name')->get();
 
         return view($this->view . 'edit', compact(
