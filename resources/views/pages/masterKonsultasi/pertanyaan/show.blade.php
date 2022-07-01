@@ -54,6 +54,10 @@
                                         <label class="col-md-2 text-right s-12"><strong>Status dibaca :</strong></label>
                                         <label class="col-md-10 s-12">{{ $data->status == 1 ? 'Sudah' : 'Belum' }}</label>
                                     </div>
+                                    <div class="row">
+                                        <label class="col-md-2 text-right s-12"><strong>Dikirim pada :</strong></label>
+                                        <label class="col-md-10 s-12">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d M Y H:i:s') }}</label>
+                                    </div>
                                     @if ($data->status == 0)
                                     <div class="row mt-2">
                                         <label class="col-md-2 text-right s-12"></label>
