@@ -64,7 +64,7 @@
                                     <li class="header font-weight-bold bg-light p-1">({{ $consultations->count() }}) Konsultasi</li>
                                     @forelse ($consultations->take(3) as $c)
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('konsultasi.show', $c->id) }}">
                                             <div class="avatar float-left mr-3">
                                                 <span class="avatar-letter avatar-letter-{{ strtolower(substr($c->name,0,1)) }} circle"></span>
                                             </div>
@@ -78,7 +78,7 @@
                                     <p class="text-center s-12">Tidak ada data</p>
                                     @endforelse
                                     @if ($consultations->count() > 3)
-                                    <li class="footer s-12 text-center"><a href="#" class="text-primary">Lihat Semua + {{ $consultations->count() - 3 }}</a></li>
+                                    <li class="footer s-12 text-center"><a href="{{ route('konsultasi.index') }}" class="text-primary">Lihat Semua + {{ $consultations->count() - 3 }}</a></li>
                                     @endif
                                 </ul>
                             </li>

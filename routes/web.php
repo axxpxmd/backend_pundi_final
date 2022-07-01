@@ -96,4 +96,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('komentar', 'KomenController');
         Route::post('komentar/api', 'KomenController@api')->name('komentar.api');
     });
+
+    Route::namespace('MasterKonsultasi')->group(function () {
+        Route::resource('konsultasi', 'KonsultasiController');
+        Route::post('konsultasi/api', 'KonsultasiController@api')->name('konsultasi.api');
+        Route::get('konsultasi/update-status/{id}', 'KonsultasiController@updateStatus')->name('konsultasi.update-status');
+    });
 });

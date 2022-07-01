@@ -90,7 +90,7 @@
             <i class="icon icon-question-circle-o green-text s-18"></i> 
             <span>Pertanyaan</span>
         </a>
-        <a href="#">
+        <a href="{{ route('konsultasi.index') }}">
             <i class="icon icon-document-text3 amber-text s-18"></i> 
             <span>Konsultasi</span>
         </a>
